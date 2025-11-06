@@ -2,11 +2,12 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { availableFields, OpenLibraryApiResult } from "../model/open-library.model";
+import { OpenLibraryBase } from "./open-library-base";
 
 // Docs: https://openlibrary.org/dev/docs/api/search
 
-@Injectable({ providedIn: 'root'})
-export class OpenLibraryApi {
+@Injectable()
+export class OpenLibraryApi extends OpenLibraryBase {
   private client = inject(HttpClient);
 
   readonly entryPoint = 'https://openlibrary.org/search.json';

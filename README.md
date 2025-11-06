@@ -1,6 +1,6 @@
-# Angular Signal Store POC
+# Angular POC
 
-Projet pour tester NgRx Signal Store
+Projet pour tester Angular POC
 
 Vous devez avoir au préalable installer pnpm sur votre système.
 

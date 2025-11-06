@@ -7,7 +7,7 @@ import { debounceTime, pipe, switchMap, tap } from "rxjs";
 import { withPaginator } from "../../../shared/store/paginator-feature";
 import { setFulfilled, setPending, withRequestStatus } from "../../../shared/store/request-status-feature";
 import { OpenLibraryApiResult, OpenLibraryRecord } from "../model/open-library.model";
-import { OpenLibraryApi } from "../service/open-library-api";
+import { OpenLibraryBase } from "../service/open-library-base";
 
 type OpenLibraryState = {
   total: number;
@@ -22,11 +22,10 @@ const initialOpenLibraryState = {
 };
 
 export const OpenLibraryStore = signalStore(
-  { providedIn: 'root' },
   withState<OpenLibraryState>(initialOpenLibraryState),
   withRequestStatus(),
   withPaginator(),
-  withMethods((store, api = inject(OpenLibraryApi)) => ({
+  withMethods((store, api = inject(OpenLibraryBase)) => ({
     search: rxMethod<string>(
       pipe(
         debounceTime(500),

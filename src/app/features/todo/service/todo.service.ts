@@ -2,9 +2,7 @@ import { Injectable } from "@angular/core";
 import { TODOS } from "../model/todo.mock";
 import { Todo } from "../model/todo.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TodoService {
   loadAll(): Todo[] {
     return TODOS;

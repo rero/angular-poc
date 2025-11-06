@@ -9,6 +9,6 @@ export class PageTitleStrategy extends TitleStrategy {
   override updateTitle(snapshot: RouterStateSnapshot): void {
     const title = this.buildTitle(snapshot);
 
-    this.title.setTitle(`NgRx Signal Store: ${title}`);
+    this.title.setTitle(`Angular POC: ${title}`);
   }
 }

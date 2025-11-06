@@ -1,10 +1,7 @@
 export type OpenLibraryApiResult = {
   numFound: number;
   start: number;
-  numFoundExact: boolean;
-  num_found: number;
   q: string;
-  documentation_url: string;
   docs: OpenLibraryRecord[];
 };
 

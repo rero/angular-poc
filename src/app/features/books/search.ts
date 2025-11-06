@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { InputText } from "primeng/inputtext";
-import { OpenLibraryStore } from './store/open-library.store';
+import { Component, inject } from '@angular/core';
+import { Button } from 'primeng/button';
 import { InputGroup } from 'primeng/inputgroup';
 import { InputGroupAddon } from 'primeng/inputgroupaddon';
-import { Button } from 'primeng/button';
+import { InputText } from "primeng/inputtext";
+import { OpenLibraryStore } from './store/open-library.store';
 
 @Component({
   selector: 'app-search',
@@ -30,7 +30,6 @@ import { Button } from 'primeng/button';
     </p-inputgroup-addon>
     </p-inputgroup>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Search {
   protected store = inject(OpenLibraryStore);
