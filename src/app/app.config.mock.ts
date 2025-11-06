@@ -6,8 +6,8 @@ import Lara from '@primeuix/themes/lara';
 import { MessageService } from 'primeng/api';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
-import { OpenLibraryApi } from './features/books/service/open-library-api';
 import { OpenLibraryBase } from './features/books/service/open-library-base';
+import { OpenLibraryMock } from './features/books/service/open-library-mock';
 import { AppStateStore } from './shared/appSate/app-state-store';
 import { PageTitleStrategy } from './shared/page-title-strategy';
 
@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
         }
     }),
     { provide: TitleStrategy, useClass: PageTitleStrategy },
-    { provide: OpenLibraryBase, useClass: OpenLibraryApi },
+    { provide: OpenLibraryBase, useClass: OpenLibraryMock },
     MessageService,
     AppStateStore
   ]

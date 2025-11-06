@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { OpenLibraryRecord } from './model/open-library.model';
 
 @Component({
@@ -14,8 +14,7 @@ import { OpenLibraryRecord } from './model/open-library.model';
         <div><span class="font-bold">Langues:</span> {{ book().language.join(', ') }}</div>
       }
     </div>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  `
 })
 export class Book {
   book = input.required<OpenLibraryRecord>();

@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Button } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { SelectButton, SelectButtonChangeEvent } from 'primeng/selectbutton';
 import { ToggleSwitch, ToggleSwitchChangeEvent } from 'primeng/toggleswitch';
+import { TodoService } from './service/todo.service';
 import { TodoFilter, TodoStore } from './store/todo.store';
 
 @Component({
   selector: 'app-todo',
   imports: [CommonModule, Button, InputText, SelectButton, FormsModule, ToggleSwitch],
   templateUrl: './todo.html',
-  providers: [TodoStore],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [TodoStore, TodoService],
 })
 export default class Todo implements OnInit {
   protected store = inject(TodoStore);

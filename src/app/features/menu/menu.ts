@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Avatar } from 'primeng/avatar';
 import { Menubar } from 'primeng/menubar';
@@ -10,7 +10,6 @@ import { ConnectedUser } from '../connected-user/connected-user';
   selector: 'app-menu',
   imports: [Avatar, Menubar, ConnectedUser, TieredMenu],
   templateUrl: './menu.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Menu {
   protected readonly store = inject(AppStateStore);

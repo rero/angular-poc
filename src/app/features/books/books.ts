@@ -1,18 +1,18 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, Signal } from '@angular/core';
-import { OpenLibraryStore } from './store/open-library.store';
-import { Search } from './search';
-import { Book } from './book';
+import { Component, inject, Signal } from '@angular/core';
+import { deepComputed } from '@ngrx/signals';
 import { Divider } from 'primeng/divider';
 import { PaginatorComponent, PaginatorConfig } from '../../shared/component/paginator';
-import { deepComputed } from '@ngrx/signals';
+import { Book } from './book';
+import { Search } from './search';
+import { OpenLibraryStore } from './store/open-library.store';
 
 @Component({
   selector: 'app-books',
   imports: [Search, Book, Divider, PaginatorComponent],
   templateUrl: './books.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [OpenLibraryStore]
 })
-export default class Books implements OnDestroy {
+export default class Books {
   protected store = inject(OpenLibraryStore);
 
   protected paginatorConfig: Signal<PaginatorConfig> = deepComputed(() => ({
@@ -20,8 +20,4 @@ export default class Books implements OnDestroy {
     rows: this.store.pager.rows(),
     total: this.store.total()
   }));
-
-  ngOnDestroy(): void {
-    this.store.reset();
-  }
 }
