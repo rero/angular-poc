@@ -1,8 +1,8 @@
-import { debounceTime, Observable, of } from "rxjs";
+import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
 import { Settings } from "./model/settings.model";
 import { userData } from "./model/user.data";
 import { User } from "./model/user.model";
-import { Injectable } from "@angular/core";
 
 
 @Injectable({ providedIn: 'root' })
