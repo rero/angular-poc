@@ -3,7 +3,7 @@ import { toObservable } from "@angular/core/rxjs-interop";
 import { patchState, signalStore, withHooks, withMethods, withState } from "@ngrx/signals";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
 import { PaginatorState } from "primeng/paginator";
-import { debounceTime, pipe, switchMap, tap } from "rxjs";
+import { debounceTime, pipe, skip, switchMap, tap } from "rxjs";
 import { withPaginator } from "../../../shared/store/paginator-feature";
 import { setFulfilled, setPending, withRequestStatus } from "../../../shared/store/request-status-feature";
 import { OpenLibraryApiResult, OpenLibraryRecord } from "../model/open-library.model";
@@ -51,7 +51,8 @@ export const OpenLibraryStore = signalStore(
   })),
   withHooks((store) => ({
     onInit: () => {
-      toObservable(store.pager).subscribe(() => store.search(store.filter()));
+      // skip: Skip the provided number of emitted values.
+      toObservable(store.pager).pipe(skip(1)).subscribe(() => store.search(store.filter()));
     }
   }))
 );
