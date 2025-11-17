@@ -31,15 +31,19 @@ export const OpenLibraryStore = signalStore(
         debounceTime(500),
         tap(() => patchState(store, setPending())),
         switchMap((query: string) => api.search(query, store.pager.currentPage(), store.pager.rows())),
-        tap((result: OpenLibraryApiResult) => patchState(
-          store,
-          { total: result.numFound, filter: result.q, documents: result.docs },
-          setFulfilled()
-        ))
+        tap((result?: OpenLibraryApiResult) => {
+          if (result) {
+            patchState(
+              store,
+              { total: result.numFound, filter: result.q, documents: result.docs },
+            );
+          }
+          patchState(store, setFulfilled());
+        }
       )
-    ),
+    )),
     reset(): void {
-      patchState(store, { total: 0, filter: '', documents: []})
+      patchState(store, { total: 0, filter: '', documents: []});
     },
     setPaginator(paginator: PaginatorState) {
       store.changePage(paginator);
@@ -47,7 +51,7 @@ export const OpenLibraryStore = signalStore(
   })),
   withHooks((store) => ({
     onInit: () => {
-      toObservable(store.pager).subscribe(() => store.search(store.filter()))
+      toObservable(store.pager).subscribe(() => store.search(store.filter()));
     }
   }))
 );

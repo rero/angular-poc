@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideEnvironmentInitializer, provideZonelessChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, TitleStrategy } from '@angular/router';
@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { OpenLibraryApi } from './features/books/service/open-library-api';
 import { OpenLibraryBase } from './features/books/service/open-library-base';
 import { AppStateStore } from './shared/appSate/app-state-store';
+import { httpResponseErrorInterceptor } from './shared/interceptor/http-response-error-interceptor';
 import { PageTitleStrategy } from './shared/page-title-strategy';
 
 export const appConfig: ApplicationConfig = {
@@ -16,7 +17,9 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([httpResponseErrorInterceptor])
+    ),
     provideAnimationsAsync(),
     provideEnvironmentInitializer(() => {
       inject(AppStateStore).loadSettings();
