@@ -11,6 +11,7 @@ export const routes: Routes = [
     path: 'login',
     pathMatch: 'full',
     loadComponent: () => import('./features/login/login'),
+    title: 'Login'
   },
   {
     path: 'todo',
@@ -21,7 +22,7 @@ export const routes: Routes = [
   {
     path: 'books',
     loadComponent: () => import('./features/books/books'),
-    title: 'Livres'
+    title: 'Bibliothèque'
   },
   {
     path: '**',

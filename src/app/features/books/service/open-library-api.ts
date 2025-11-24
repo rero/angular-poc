@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "@env/environment";
 import { availableFields, OpenLibraryApiResult } from "../model/open-library.model";
 import { OpenLibraryBase } from "./open-library-base";
 
@@ -10,7 +11,7 @@ import { OpenLibraryBase } from "./open-library-base";
 export class OpenLibraryApi extends OpenLibraryBase {
   private client = inject(HttpClient);
 
-  readonly entryPoint = 'https://openlibrary.org/search.json';
+  readonly entryPoint = `${environment.openLibraryApiUrl}/search.json`;
 
   search(query: string, page:number = 1, limit: number = 10): Observable<OpenLibraryApiResult> {
     const fields = availableFields.join(',');

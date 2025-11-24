@@ -1,6 +1,5 @@
 import { Component, inject, Signal } from '@angular/core';
 import { deepComputed } from '@ngrx/signals';
-import { Divider } from 'primeng/divider';
 import { PaginatorComponent, PaginatorConfig } from '../../shared/component/paginator';
 import { Book } from './book';
 import { Search } from './search';
@@ -8,7 +7,7 @@ import { OpenLibraryStore } from './store/open-library.store';
 
 @Component({
   selector: 'app-books',
-  imports: [Search, Book, Divider, PaginatorComponent],
+  imports: [Search, Book, PaginatorComponent],
   templateUrl: './books.html',
   providers: [OpenLibraryStore]
 })

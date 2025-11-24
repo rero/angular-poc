@@ -2,7 +2,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideEnvironmentInitializer, provideZonelessChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, TitleStrategy } from '@angular/router';
-import Lara from '@primeuix/themes/lara';
+import Aura from '@primeuix/themes/Aura';
 import { MessageService } from 'primeng/api';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
@@ -27,8 +27,8 @@ export const appConfig: ApplicationConfig = {
     providePrimeNG({
         ripple: true,
         theme: {
-            preset: Lara
-        }
+          preset: Aura
+      }
     }),
     { provide: TitleStrategy, useClass: PageTitleStrategy },
     { provide: OpenLibraryBase, useClass: OpenLibraryApi },

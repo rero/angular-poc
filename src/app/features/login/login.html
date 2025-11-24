@@ -1,64 +1,55 @@
 @if (store.isConnected()) {
-  <div class="flex flex-col gap-4 pt-4">
-    <div class="flex justify-center font-bold text-2xl">Vous êtes déjà identifié</div>
-    <div class="flex justify-center">
-      <a size="small" routerLink="/" pButton>Retour à la page d'accueil</a>
-    </div>
+<div class="flex flex-col gap-4 pt-4">
+  <div class="flex justify-center font-bold text-2xl">Vous êtes déjà identifié</div>
+  <div class="flex justify-center">
+    <a size="small" routerLink="/" pButton>Retour à la page d'accueil</a>
   </div>
+</div>
 } @else {
-  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" class="mx-auto h-10 w-auto" />
-      <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Connectez-vous à votre compte</h2>
-    </div>
-
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      @if (login.controls.username.hasError('loginNotFound')) {
-        <div class="font-bold text-red-500 mb-4">{{ login.controls.username.getError('loginNotFound') }}</div>
-      }
-      <form [formGroup]="login" (ngSubmit)="handleSubmit()" class="space-y-6">
-        <div class="flex flex-col gap-2">
-          <label for="email" class="block text-sm/6 font-medium text-gray-900">Utilisateur</label>
-          <div>
-            <input
-              formControlName="username"
-              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-            />
-          </div>
-          <div class="text-sm text-gray-400 italic">
-            Utilisateur valide: admin
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm/6 font-medium text-gray-900">Mot de passe</label>
-            <div class="text-sm">
-              <a href="#" class="font-semibold text-blue-600 hover:text-blue-500">Mot de passe oublié?</a>
-            </div>
-          </div>
-          <div>
-            <input
-              formControlName="password"
-              type="password"
-              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-              [class]="login.controls.password.errors ? 'border-solid border-red-500': ''"
-            />
-          </div>
-          @if (login.controls.password.invalid && (login.controls.password.dirty || login.controls.password.touched)) {
-            <div class="font-bold text-red-500">Requis</div>
-          }
-        </div>
-
-        <div>
-          <button
-          [disabled]="!login.valid"
-          type="submit"
-          class="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
-          [class]="login.valid ? 'bg-blue-600 hover:bg-blue-500 focus-visible:outline-indigo-600' : 'bg-blue-300'"
-          >S'identifier</button>
-        </div>
-      </form>
-    </div>
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img src="images/logo.svg" alt="RERO +" class="mx-auto h-15 w-auto" />
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Connectez-vous à votre compte</h2>
   </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    @if (login.controls.username.hasError('loginNotFound')) {
+    <div class="font-bold text-red-500 mb-4">{{ login.controls.username.getError('loginNotFound') }}</div>
+    }
+    <form [formGroup]="login" (ngSubmit)="handleSubmit()" class="space-y-6">
+      <div class="flex flex-col gap-2">
+        <label for="email" class="block text-sm/6 font-medium text-gray-900">Utilisateur</label>
+        <div>
+          <input pInputText formControlName="username" class="block w-full" />
+        </div>
+        <div class="text-sm text-gray-400 italic">
+          Utilisateur valide: admin
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm/6 font-medium text-gray-900">Mot de passe</label>
+          <div class="text-sm">
+            <a href="#" class="font-semibold text-blue-600 hover:text-blue-500">Mot de passe oublié?</a>
+          </div>
+        </div>
+        <div>
+          <input pInputText formControlName="password" type="password"
+            class="block w-full"
+            [class]="login.controls.password.errors ? 'border-solid border-red-500': ''" />
+        </div>
+        @if (login.controls.password.invalid && (login.controls.password.dirty || login.controls.password.touched)) {
+        <div class="font-bold text-red-500">Requis</div>
+        }
+      </div>
+
+      <div>
+        <p-button type="submit" severity="info" [disabled]="!login.valid" styleClass="flex w-full justify-center">
+          S'identifier
+        </p-button>
+      </div>
+    </form>
+  </div>
+</div>
 }

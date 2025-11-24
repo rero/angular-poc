@@ -11,6 +11,11 @@ export type OpenLibraryRecord = {
   language: string[];
   key: string;
   title: string;
+  cover_i?: number;
+  isbn?: string[];
+  first_publish_year?: number;
+  publisher?: string[];
+  edition_count?: number;
 }
 
 export const availableFields = [
@@ -19,4 +24,9 @@ export const availableFields = [
   'language',
   'key',
   'title',
+  'cover_i',
+  'isbn',
+  'first_publish_year',
+  'publisher',
+  'edition_count',
 ];

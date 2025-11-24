@@ -13,3 +13,21 @@ h2 {
 h3 {
   @apply text-2xl;
 }
+
+/* Force PrimeNG Avatar to be circular */
+.p-avatar {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  aspect-ratio: 1 / 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.p-avatar.p-avatar-circle {
+  border-radius: 50% !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  min-width: 2rem !important;
+  min-height: 2rem !important;
+}

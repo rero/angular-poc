@@ -1,33 +1,113 @@
-<div class="flex flex-col">
-  <h1 class="flex justify-center">Tâche</h1>
-  <div class="flex justify-center">
-    <div class="w-[30%]">
-      <div class="flex flex-col gap-2 my-4">
-        <input class="w-full" #input type="text" pInputText placeholder="Ajouter un élément et presser entrer" (keyup.enter)="addTodo(input.value)" />
-        <div class="flex justify-end text-gray-400 italic text-sm">{{ store.todos().length }} elements</div>
-      </div>
+<div class="max-w-4xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">Mes Tâches</h1>
+    <p class="text-gray-500">Gérez vos tâches quotidiennes efficacement</p>
+  </div>
 
-      <div class="my-8 flex justify-center">
-        <p-selectbutton (onChange)="updateFilter($event)" [(ngModel)]="filter" [options]="filtersOptions()" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+  <!-- Main Card -->
+  <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+    <!-- Input Section -->
+    <div class="p-6 bg-gradient-to-r from-[#1765A2]/5 to-[#1EA1CF]/5 border-b border-gray-100">
+      <div class="flex gap-3">
+        <div class="flex-1 relative">
+          <input #input type="text" pInputText placeholder="Ajouter une nouvelle tâche..."
+            (keyup.enter)="addTodo(input.value)"
+            class="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1EA1CF] focus:ring-2 focus:ring-[#1EA1CF]/20 transition-all" />
+        </div>
+        <p-button severity="info" (click)="addTodo(input.value)">
+          <i class="pi pi-plus"></i>
+          <span>Ajouter</span>
+        </p-button>
       </div>
-
-      <div class="flex">
-        <ul class="mt-4 w-full">
-          @for (todo of store.filteredTodos(); track todo.id) {
-            <li class="mt-2">
-              <div class="flex gap-8 w-full items-center justify-between">
-                <div>
-                  <p-toggleswitch #toggle [ngModel]="todo.completed" (onChange)="updateTodo(todo.id, $event)" />
-                </div>
-                <div [ngClass]="{'line-through text-gray-400': todo.completed }">{{ todo.title }}</div>
-                <div>
-                  <p-button icon="pi pi-trash" severity="secondary" (onClick)="deleteTodo(todo.id)" />
-                </div>
-              </div>
-            </li>
-          }
-        </ul>
+      <div class="mt-3 ml-1 flex justify-between text-sm">
+        <span class="text-gray-500">
+          <i class="pi pi-list mr-1"></i>
+          {{ store.todos().length }} tâche{{ store.todos().length > 1 ? 's' : '' }} au total
+        </span>
       </div>
     </div>
+
+    <!-- Filter Section -->
+    <div class="px-6 py-4 bg-gray-50 border-b border-gray-100">
+      <div class="flex justify-center">
+        <p-selectbutton (onChange)="updateFilter($event)" [(ngModel)]="filter" [options]="filtersOptions()"
+          optionLabel="label" optionValue="value" styleClass="custom-select-button" />
+      </div>
+    </div>
+
+    <!-- Todo List -->
+    <div class="p-6">
+      @if (store.filteredTodos().length === 0) {
+      <!-- Empty State -->
+      <div class="text-center py-12">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
+          <i class="pi pi-check-circle text-3xl text-gray-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">
+          @if (filter() === 'all') {
+          Aucune tâche pour le moment
+          } @else if (filter() === 'pending') {
+          Aucune tâche en cours
+          } @else {
+          Aucune tâche terminée
+          }
+        </h3>
+        <p class="text-gray-500">
+          @if (filter() === 'all') {
+          Commencez par ajouter une nouvelle tâche ci-dessus
+          } @else {
+          Essayez un autre filtre pour voir vos tâches
+          }
+        </p>
+      </div>
+      } @else {
+      <!-- Todo Items -->
+      <ul class="space-y-2">
+        @for (todo of store.filteredTodos(); track todo.id) {
+        <li class="group">
+          <div
+            class="flex items-center gap-4 p-4 rounded-lg border-2 border-gray-100 hover:border-[#1EA1CF]/30 hover:bg-[#1EA1CF]/5 transition-all duration-200">
+            <!-- Toggle Switch -->
+            <div class="flex-shrink-0">
+              <p-toggleswitch [ngModel]="todo.completed" (onChange)="updateTodo(todo.id, $event)" />
+            </div>
+
+            <!-- Todo Text -->
+            <div class="flex-1 min-w-0">
+              <p [ngClass]="{
+                'line-through text-gray-400': todo.completed,
+                'text-gray-800 font-medium': !todo.completed
+              }" class="transition-all duration-200">
+                {{ todo.title }}
+              </p>
+            </div>
+
+            <!-- Delete Button -->
+            <div class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+              <p-button severity="danger" variant="text" (click)="deleteTodo(todo.id)">
+                <i class="pi pi-trash"></i>
+              </p-button>
+            </div>
+          </div>
+        </li>
+        }
+      </ul>
+      }
+    </div>
   </div>
+
+  <!-- Stats Footer -->
+  @if (store.todos().length > 0) {
+  <div class="mt-6 flex items-center justify-center gap-8 text-sm text-gray-500">
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full bg-[#1EA1CF]"></div>
+      <span>{{ completedCount() }} terminée{{ completedCount() > 1 ? 's' : '' }}</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+      <span>{{ pendingTotalCount() }} en cours</span>
+    </div>
+  </div>
+  }
 </div>
