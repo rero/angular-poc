@@ -1,7 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
+import { Component, computed, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Button } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { SelectButton, SelectButtonChangeEvent } from 'primeng/selectbutton';
 import { ToggleSwitch, ToggleSwitchChangeEvent } from 'primeng/toggleswitch';
@@ -10,7 +8,7 @@ import { TodoFilter, TodoStore } from './store/todo.store';
 
 @Component({
   selector: 'app-todo',
-  imports: [CommonModule, Button, InputText, SelectButton, FormsModule, ToggleSwitch],
+  imports: [InputText, SelectButton, FormsModule, ToggleSwitch],
   templateUrl: './todo.html',
   providers: [TodoStore, TodoService],
 })
@@ -22,10 +20,22 @@ export default class Todo implements OnInit {
   input = viewChild.required<ElementRef>('input');
 
   filtersOptions = signal([
-    { label: 'Tout', value: 'all'},
-    { label: 'En cours', value: 'pending'},
-    { label: 'Terminé', value: 'completed'},
+    { label: 'Tout', value: 'all' },
+    { label: 'En cours', value: 'pending' },
+    { label: 'Terminé', value: 'completed' },
   ]);
+
+  pendingCount = computed(() =>
+    this.store.filteredTodos().filter(t => !t.completed).length
+  );
+
+  completedCount = computed(() =>
+    this.store.todos().filter(t => t.completed).length
+  );
+
+  pendingTotalCount = computed(() =>
+    this.store.todos().filter(t => !t.completed).length
+  );
 
   ngOnInit(): void {
     this.filter.set(this.store.filter());

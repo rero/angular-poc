@@ -1,31 +1,48 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Avatar } from 'primeng/avatar';
-import { Menubar } from 'primeng/menubar';
-import { TieredMenu } from 'primeng/tieredmenu';
 import { AppStateStore } from '../../shared/appSate/app-state-store';
-import { ConnectedUser } from '../connected-user/connected-user';
+import { LayoutService } from '../../shared/layout/layout.service';
 
 @Component({
-  selector: 'app-menu',
-  imports: [Avatar, Menubar, ConnectedUser, TieredMenu],
-  templateUrl: './menu.html',
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, Avatar],
+  templateUrl: './sidebar.html',
 })
-export class Menu {
+export class Sidebar {
   protected readonly store = inject(AppStateStore);
   protected readonly router = inject(Router);
+  protected readonly layoutService = inject(LayoutService);
+
+  expanded = this.layoutService.sidebarExpanded;
+
+  toggle() {
+    this.layoutService.toggleSidebar();
+  }
+
+  formattedUserName = computed(() => {
+    const user = this.store.user();
+    if (user.firstName && user.lastName) {
+      return `${user.firstName.charAt(0)}. ${user.lastName}`;
+    }
+    return '';
+  });
 
   items = signal([
     {
       label: 'Accueil',
+      icon: 'pi pi-home',
       routerLink: ['/']
     },
     {
       label: 'Tâche',
+      icon: 'pi pi-check-square',
       routerLink: ['/', 'todo']
     },
     {
       label: 'Livres',
+      icon: 'pi pi-book',
       routerLink: ['/', 'books']
     }
   ]);
@@ -33,6 +50,7 @@ export class Menu {
   userItems = computed(() => [
     {
       label: "S'identifier",
+      icon: 'pi pi-sign-in',
       visible: !this.store.isConnected(),
       command: () => {
         this.router.navigate(['login']);
@@ -40,11 +58,11 @@ export class Menu {
     },
     {
       label: 'Se déconnecter',
+      icon: 'pi pi-sign-out',
       visible: this.store.isConnected(),
       command: () => {
         this.store.logout();
       }
     }
-  ]
-  );
+  ]);
 }

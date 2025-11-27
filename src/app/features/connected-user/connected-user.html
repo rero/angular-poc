@@ -1,8 +1,0 @@
-<div>
-  @if (!store.isConnected()) {
-    Anonyme
-  } @else {
-    @let user = store.user();
-    {{ user.lastName }} {{ user.firstName }}
-  }
-</div>

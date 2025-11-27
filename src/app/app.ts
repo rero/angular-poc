@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Toast } from 'primeng/toast';
-import { Menu } from './features/menu/menu';
+import { Sidebar } from './features/sidebar/sidebar';
 import { AppStateStore } from './shared/appSate/app-state-store';
+import { LayoutService } from './shared/layout/layout.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Menu, Toast],
+  imports: [RouterOutlet, Sidebar, Toast],
   providers: [AppStateStore],
   template: `
-  <div class="m-4">
-    <app-menu />
-    <div class="mt-4 mx-4 flex justify-center">
-      <div class="w-[80%]">
+  <div class="min-h-screen bg-gray-50">
+    <app-sidebar />
+    <div class="transition-all duration-300 p-4"
+         [class.ml-64]="layoutService.sidebarExpanded()"
+         [class.ml-16]="!layoutService.sidebarExpanded()">
+      <div class="max-w-7xl mx-auto">
         <router-outlet />
       </div>
       <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
@@ -21,4 +24,5 @@ import { AppStateStore } from './shared/appSate/app-state-store';
   `
 })
 export class App {
+  protected readonly layoutService = inject(LayoutService);
 }

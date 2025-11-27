@@ -13,3 +13,81 @@ h2 {
 h3 {
   @apply text-2xl;
 }
+
+/* Override PrimeNG default focus colors with RERO+ blue */
+:root {
+  --p-primary-color: #1765A2;
+  --p-primary-contrast-color: #ffffff;
+  --p-primary-hover-color: #1765A2;
+  --p-primary-active-color: #1765A2;
+  --p-focus-ring-color: #1EA1CF;
+}
+
+/* Override ALL input focus styles - PrimeNG and Tailwind */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+.p-inputtext:enabled:focus {
+  outline: 0 none !important;
+  outline-offset: 0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(30, 161, 207, 0.2) !important;
+  border-color: #1EA1CF !important;
+  --tw-ring-color: #1EA1CF !important;
+  --tw-ring-offset-color: #1EA1CF !important;
+}
+
+/* Override ALL input hover styles */
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover,
+input[type="search"]:hover,
+textarea:hover,
+.p-inputtext:enabled:hover {
+  border-color: #1EA1CF !important;
+}
+
+/* Override button focus styles */
+.p-button:focus,
+button:focus {
+  outline: 0 none !important;
+  outline-offset: 0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(30, 161, 207, 0.2) !important;
+}
+
+/* Override Tailwind ring colors globally */
+*:focus {
+  --tw-ring-color: #1EA1CF !important;
+}
+
+/* Force PrimeNG Avatar to be circular */
+.p-avatar {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  aspect-ratio: 1 / 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.p-avatar.p-avatar-circle {
+  border-radius: 50% !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  min-width: 2rem !important;
+  min-height: 2rem !important;
+}
+
+/* Override PrimeNG SelectButton colors to RERO+ blue */
+.p-selectbutton .p-button,
+.custom-select-button .p-button {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.p-selectbutton .p-button:focus,
+.custom-select-button .p-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

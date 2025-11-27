@@ -29,7 +29,7 @@ export function withPaginator() {
         patchState(store, {
           pager: {
             currentPage: (event.page || 0) + 1,
-            firstRecord: (event.page || 1 - 1) * (event.rows || 10) + 1,
+            firstRecord: (event.page || 0) * (event.rows || 10) + 1,
             rows: (event.rows || 10)
           }
         });
