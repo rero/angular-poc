@@ -3,14 +3,14 @@ import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideE
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, TitleStrategy } from '@angular/router';
 import Aura from '@primeuix/themes/Aura';
+import { AppStateStore } from '@shared/appSate/app-state-store';
+import { httpResponseErrorInterceptor } from '@shared/interceptor/http-response-error-interceptor';
+import { PageTitleStrategy } from '@shared/page-title-strategy';
 import { MessageService } from 'primeng/api';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import { OpenLibraryApi } from './features/books/service/open-library-api';
 import { OpenLibraryBase } from './features/books/service/open-library-base';
-import { AppStateStore } from './shared/appSate/app-state-store';
-import { httpResponseErrorInterceptor } from './shared/interceptor/http-response-error-interceptor';
-import { PageTitleStrategy } from './shared/page-title-strategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -1,9 +1,8 @@
-import { Component, inject, Signal } from '@angular/core';
-import { deepComputed } from '@ngrx/signals';
-import { PaginatorComponent, PaginatorConfig } from '../../shared/component/paginator';
+import { Component, inject } from '@angular/core';
 import { Book } from './book';
 import { Search } from './search';
 import { OpenLibraryStore } from './store/open-library.store';
+import { PaginatorComponent } from '@shared/component/paginator';
 
 @Component({
   selector: 'app-books',
@@ -13,10 +12,4 @@ import { OpenLibraryStore } from './store/open-library.store';
 })
 export default class Books {
   protected store = inject(OpenLibraryStore);
-
-  protected paginatorConfig: Signal<PaginatorConfig> = deepComputed(() => ({
-    first: this.store.pager.firstRecord(),
-    rows: this.store.pager.rows(),
-    total: this.store.total()
-  }));
 }

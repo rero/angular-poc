@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AppStateStore } from '@shared/appSate/app-state-store';
+import { LayoutService } from '@shared/layout/layout.service';
 import { Toast } from 'primeng/toast';
 import { Sidebar } from './features/sidebar/sidebar';
-import { AppStateStore } from './shared/appSate/app-state-store';
-import { LayoutService } from './shared/layout/layout.service';
 
 @Component({
   selector: 'app-root',

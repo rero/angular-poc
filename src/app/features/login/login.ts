@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AppStateApi } from '@shared/appSate/app-state-api';
+import { AppStateStore } from '@shared/appSate/app-state-store';
 import { Button, ButtonDirective } from "primeng/button";
 import { InputText } from 'primeng/inputtext';
-import { AppStateApi } from '../../shared/appSate/app-state-api';
-import { AppStateStore } from '../../shared/appSate/app-state-store';
 
 @Component({
   selector: 'app-login',

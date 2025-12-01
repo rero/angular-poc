@@ -1,8 +1,8 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AppStateStore } from '@shared/appSate/app-state-store';
+import { LayoutService } from '@shared/layout/layout.service';
 import { Avatar } from 'primeng/avatar';
-import { AppStateStore } from '../../shared/appSate/app-state-store';
-import { LayoutService } from '../../shared/layout/layout.service';
 
 @Component({
   selector: 'app-sidebar',

@@ -30,7 +30,7 @@
 
   <!-- Pagination -->
   <div class="flex justify-center">
-    <shared-paginator [paginatorState]="paginatorConfig()" (pageChange)="store.setPaginator($event)" />
+    <shared-paginator [pager]="store.pager()" [total]="store.total()" (pageChange)="store.changePage($event)" />
   </div>
   } @else {
   <!-- Empty State -->

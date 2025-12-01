@@ -1,11 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { Paginator, PaginatorState } from 'primeng/paginator';
-
-export type PaginatorConfig = {
-  first: number;
-  rows: number;
-  total: number;
-}
+import { Pager } from '../store/paginator-feature';
 
 @Component({
   selector: 'shared-paginator',
@@ -13,16 +8,18 @@ export type PaginatorConfig = {
   template: `
     <p-paginator
       alwaysShow="false"
-      [first]="paginatorState().first"
-      [rows]="paginatorState().rows"
-      [totalRecords]="paginatorState().total"
-      [rowsPerPageOptions]="[10, 20, 50]"
+      [first]="pager().first"
+      [rows]="pager().rows"
+      [totalRecords]="total()"
+      [rowsPerPageOptions]="pager().rowsPerPageOptions"
       (onPageChange)="pageChange.emit($event)" />
   `
 })
 export class PaginatorComponent {
 
-  paginatorState = input.required<PaginatorConfig>();
+  pager = input.required<Pager>();
+
+  total = input.required<number>();
 
   pageChange = output<PaginatorState>();
 }
