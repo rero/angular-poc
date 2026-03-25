@@ -1,6 +1,5 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideEnvironmentInitializer, provideZonelessChangeDetection } from '@angular/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, TitleStrategy } from '@angular/router';
 import Aura from '@primeuix/themes/Aura';
 import { AppStateStore } from '@shared/appSate/app-state-store';
@@ -20,7 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([httpResponseErrorInterceptor])
     ),
-    provideAnimationsAsync(),
     provideEnvironmentInitializer(() => {
       inject(AppStateStore).loadSettings();
     }),

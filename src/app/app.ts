@@ -18,7 +18,9 @@ import { Sidebar } from './features/sidebar/sidebar';
       <div class="max-w-7xl mx-auto">
         <router-outlet />
       </div>
-      <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
+      @defer (on immediate) {
+        <p-toast />
+      }
     </div>
   </div>
   `
