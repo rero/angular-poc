@@ -11,10 +11,11 @@ pnpm install
 
 ## Bibliothèques dans ce projet
 
-- [Angular 20](https://angular.dev)
+- [Angular 21](https://angular.dev)
 - [NgRx Signal Store](https://ngrx.io/guide/signals)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Prime NG](https://primeng.org)
+- [Vitest](https://vitest.dev)
 
 ## Serveur
 

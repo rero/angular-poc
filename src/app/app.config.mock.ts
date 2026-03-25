@@ -1,6 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideEnvironmentInitializer, provideZonelessChangeDetection } from '@angular/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, TitleStrategy } from '@angular/router';
 import Lara from '@primeuix/themes/lara';
 import { AppStateStore } from '@shared/appSate/app-state-store';
@@ -17,7 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(),
-    provideAnimationsAsync(),
     provideEnvironmentInitializer(() => {
       inject(AppStateStore).loadSettings();
     }),

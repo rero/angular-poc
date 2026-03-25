@@ -17,7 +17,7 @@ export const routes: Routes = [
     path: 'todo',
     pathMatch:'full',
     loadComponent: () => import('./features/todo/todo'),
-    title: 'Document'
+    title: 'Tâches'
   },
   {
     path: 'books',
