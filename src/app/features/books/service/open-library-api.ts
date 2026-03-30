@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "@env/environment";
 import { availableFields, OpenLibraryApiResult } from "../model/open-library.model";
+import { OpenLibraryWork } from "../model/open-library-work.model";
 import { OpenLibraryBase } from "./open-library-base";
 
 // Docs: https://openlibrary.org/dev/docs/api/search
@@ -13,10 +14,16 @@ export class OpenLibraryApi extends OpenLibraryBase {
 
   readonly entryPoint = `${environment.openLibraryApiUrl}/search.json`;
 
-  search(query: string, page:number = 1, limit: number = 10): Observable<OpenLibraryApiResult> {
+  search(query: string, page: number = 1, limit: number = 10): Observable<OpenLibraryApiResult> {
     const fields = availableFields.join(',');
     return this.client.get<OpenLibraryApiResult>(
       `${this.entryPoint}?q=${query}&page=${page}&limit=${limit}&fields=${fields}`
+    );
+  }
+
+  getWork(key: string): Observable<OpenLibraryWork> {
+    return this.client.get<OpenLibraryWork>(
+      `${environment.openLibraryApiUrl}/works/${key}.json`
     );
   }
 }

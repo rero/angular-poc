@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AppStateStore } from '@shared/appSate/app-state-store';
 import { LayoutService } from '@shared/layout/layout.service';
 import { Toast } from 'primeng/toast';
 import { Sidebar } from './features/sidebar/sidebar';
@@ -8,7 +7,6 @@ import { Sidebar } from './features/sidebar/sidebar';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Sidebar, Toast],
-  providers: [AppStateStore],
   template: `
   <div class="min-h-screen bg-gray-50">
     <app-sidebar />

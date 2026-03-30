@@ -1,10 +1,11 @@
 import { Component, computed, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { environment } from '@env/environment';
 import { OpenLibraryRecord } from './model/open-library.model';
 
 @Component({
   selector: 'app-book',
-  imports: [],
+  imports: [RouterLink],
   template: `
     <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:border-[#1EA1CF]/30 transition-all duration-300 group h-full flex flex-col">
       <!-- Book Cover -->
@@ -32,8 +33,9 @@ import { OpenLibraryRecord } from './model/open-library.model';
       <!-- Book Info -->
       <div class="p-5 flex-1 flex flex-col">
         <!-- Title -->
-        <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#1765A2] transition-colors">
-          {{ book().title }}
+        <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2 transition-colors">
+          <a [routerLink]="['/books', workId()]"
+             class="hover:text-[#1765A2]">{{ book().title }}</a>
         </h3>
 
         <!-- Authors -->
@@ -87,7 +89,7 @@ import { OpenLibraryRecord } from './model/open-library.model';
 })
 export class Book {
   book = input.required<OpenLibraryRecord>();
-
+  workId = computed(() => this.book().key.split('/').pop());
   // Compute cover URL from ISBN or cover_i
   coverUrl = computed(() => {
     const bookData = this.book();

@@ -3,11 +3,20 @@ import { OpenLibraryBase } from './open-library-base';
 import { Injectable } from '@angular/core';
 import * as data from './open-library-results.json';
 import { OpenLibraryApiResult, OpenLibraryRecord } from '../model/open-library.model';
+import { OpenLibraryWork } from '../model/open-library-work.model';
 
 // Docs: https://openlibrary.org/dev/docs/api/search
 
 @Injectable()
 export class OpenLibraryMock extends OpenLibraryBase {
+  getWork(key: string): Observable<OpenLibraryWork> {
+    const record = (data as OpenLibraryRecord[]).find(r => r.key === `/works/${key}`);
+    return of({
+      key: `/works/${key}`,
+      title: record?.title ?? 'Inconnu',
+    }).pipe(delay(500));
+  }
+
   search(query: string, page: number = 1, limit: number = 10): Observable<OpenLibraryApiResult> {
     // no result
     if (!query) {

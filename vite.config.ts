@@ -1,8 +1,15 @@
 import { defineConfig } from 'vitest/config';
 import angular from '@analogjs/vite-plugin-angular';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [angular()],
+  resolve: {
+    alias: {
+      '@env': resolve(__dirname, 'src/environments'),
+      '@shared': resolve(__dirname, 'src/app/shared'),
+    },
+  },
   test: {
     globals: true,
     setupFiles: ['src/test-setup.ts'],
