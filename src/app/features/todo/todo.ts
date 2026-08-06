@@ -1,10 +1,10 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Button } from 'primeng/button';
-import { InputText } from 'primeng/inputtext';
-import { SelectButton, SelectButtonChangeEvent } from 'primeng/selectbutton';
-import { ToggleSwitch, ToggleSwitchChangeEvent } from 'primeng/toggleswitch';
+import { Button } from '@openng/optimus-ui/button';
+import { InputText } from '@openng/optimus-ui/inputtext';
+import { SelectButton, SelectButtonChangeEvent } from '@openng/optimus-ui/selectbutton';
+import { ToggleSwitch, ToggleSwitchChangeEvent } from '@openng/optimus-ui/toggleswitch';
 import { TodoService } from './service/todo.service';
 import { TodoFilter, TodoStore } from './store/todo.store';
 
@@ -13,6 +13,7 @@ import { TodoFilter, TodoStore } from './store/todo.store';
   imports: [InputText, SelectButton, FormsModule, ToggleSwitch, Button, NgClass],
   templateUrl: './todo.html',
   providers: [TodoStore, TodoService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class Todo implements OnInit {
   protected store = inject(TodoStore);

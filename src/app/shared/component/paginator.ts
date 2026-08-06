@@ -1,5 +1,5 @@
-import { Component, input, output } from '@angular/core';
-import { Paginator, PaginatorState } from 'primeng/paginator';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { Paginator, PaginatorState } from '@openng/optimus-ui/paginator';
 import { Pager } from '../store/paginator-feature';
 
 @Component({
@@ -13,7 +13,8 @@ import { Pager } from '../store/paginator-feature';
       [totalRecords]="total()"
       [rowsPerPageOptions]="pager().rowsPerPageOptions"
       (onPageChange)="pageChange.emit($event)" />
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaginatorComponent {
 

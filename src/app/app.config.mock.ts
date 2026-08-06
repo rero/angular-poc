@@ -1,11 +1,11 @@
 import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideEnvironmentInitializer, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, TitleStrategy } from '@angular/router';
-import Lara from '@primeuix/themes/lara';
+import Lara from '@openng/optimus-ui-themes/lara';
 import { AppStateStore } from '@shared/appSate/app-state-store';
 import { PageTitleStrategy } from '@shared/page-title-strategy';
-import { MessageService } from 'primeng/api';
-import { providePrimeNG } from 'primeng/config';
+import { MessageService } from '@openng/optimus-ui/api';
+import { provideOptimus } from '@openng/optimus-ui/config';
 import { routes } from './app.routes';
 import { OpenLibraryBase } from './features/books/service/open-library-base';
 import { OpenLibraryMock } from './features/books/service/open-library-mock';
@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideEnvironmentInitializer(() => {
       inject(AppStateStore).loadSettings();
     }),
-    providePrimeNG({
+    provideOptimus({
         ripple: true,
         theme: {
             preset: Lara

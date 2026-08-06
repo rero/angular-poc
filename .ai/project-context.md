@@ -9,7 +9,8 @@
 - NgRx Signal Store for application state
 - Signals preferred over RxJS
 - Vitest for testing
-- Node 20+
+- Node 22.13+
+- pnpm as package manager
 
 ## Architecture principles
 

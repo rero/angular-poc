@@ -14,7 +14,7 @@ pnpm install
 - [Angular 21](https://angular.dev)
 - [NgRx Signal Store](https://ngrx.io/guide/signals)
 - [Tailwind CSS](https://tailwindcss.com)
-- [Prime NG](https://primeng.org)
+- [Optimus UI](https://optimus.openng.org/)
 - [Vitest](https://vitest.dev)
 
 ## Serveur

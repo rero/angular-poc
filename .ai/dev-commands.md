@@ -5,16 +5,34 @@ LLM tools should prefer these commands instead of inventing new ones.
 
 ## Install dependencies
 
-npm install
+pnpm install
 
 ## Development server
 
 Start the Angular development server:
 
-npm run start
+pnpm start
+
+Start the development server against mock data:
+
+pnpm start_mock
 
 ## Build
 
-Build the Angular library project:
+Build the Angular application:
 
-npm run build
+pnpm build
+
+## Tests
+
+Run the test suite once:
+
+pnpm test
+
+Run tests in watch mode:
+
+pnpm test:watch
+
+Run tests with coverage:
+
+pnpm test:coverage

@@ -7,14 +7,14 @@ Components rely on signals for UI updates.
 Example:
 
 @Component({
-  standalone: true,
+  selector: 'app-counter',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CounterComponent {
 
-  store = inject(CounterStore)
+  store = inject(CounterStore);
 
-  count = this.store.count
+  count = this.store.count;
 
 }
 
@@ -35,7 +35,7 @@ export const CounterStore = signalStore(
 
   withMethods((store) => ({
     increment() {
-      store.count.update(v => v + 1)
+      store.count.update(v => v + 1);
     }
   }))
   )
@@ -43,8 +43,9 @@ export const CounterStore = signalStore(
 Usage in component:
 
 @Component({
-  standalone: true
+  selector: 'app-counter',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CounterComponent {
-  store = inject(CounterStore)
+  store = inject(CounterStore);
 }

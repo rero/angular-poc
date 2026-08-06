@@ -1,6 +1,6 @@
-@use "primeicons/primeicons.css";
+@use "@openng/icons/openng-icons.css";
 @use "tailwindcss";
-@plugin "tailwindcss-primeui";
+@plugin "@openng/optimus-ui-tailwindcss";
 
 h1 {
   @apply text-4xl;

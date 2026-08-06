@@ -2,7 +2,7 @@ import { patchState, signalStore, withComputed, withHooks, withMethods, withProp
 import { Todo } from "../model/todo.model";
 import { computed, inject } from "@angular/core";
 import { TodoService } from "../service/todo.service";
-import { MessageService } from "primeng/api";
+import { MessageService } from "@openng/optimus-ui/api";
 
 export type TodoFilter = "all" | "pending" | "completed";
 

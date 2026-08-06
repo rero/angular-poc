@@ -1,5 +1,5 @@
 import { patchState, signalMethod, signalStoreFeature, withMethods, withState } from "@ngrx/signals";
-import { PaginatorState } from "primeng/paginator";
+import { PaginatorState } from "@openng/optimus-ui/paginator";
 
 export type Pager = {
   page: number;

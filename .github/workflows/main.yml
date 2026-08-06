@@ -9,17 +9,20 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.12.x, 24.0.x]
+        node-version: [22.13.x, 24.0.x]
 
     steps:
     - uses: actions/checkout@v6
+    - name: Use pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 11.17.0
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
+        cache: pnpm
     - name: install package
-      run: |
-        npm install -g @angular/cli@21
-        npm ci
+      run: pnpm install --frozen-lockfile
     - name: run tests
-      run: npm test
+      run: pnpm test

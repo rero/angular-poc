@@ -1,15 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AppStateApi } from '@shared/appSate/app-state-api';
 import { AppStateStore } from '@shared/appSate/app-state-store';
-import { Button, ButtonDirective } from "primeng/button";
-import { InputText } from 'primeng/inputtext';
+import { Button, ButtonDirective } from "@openng/optimus-ui/button";
+import { InputText } from '@openng/optimus-ui/inputtext';
 
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, ButtonDirective, RouterLink, InputText, Button],
   templateUrl: './login.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class Login {
   protected store = inject(AppStateStore);
