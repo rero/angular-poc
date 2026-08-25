@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Paginator, PaginatorState } from '@openng/optimus-ui/paginator';
+
 import { Pager } from '../store/paginator-feature';
 
 @Component({
-  selector: 'shared-paginator',
+  selector: 'app-paginator',
   imports: [Paginator],
   template: `
     <p-paginator
@@ -14,7 +15,6 @@ import { Pager } from '../store/paginator-feature';
       [rowsPerPageOptions]="pager().rowsPerPageOptions"
       (onPageChange)="pageChange.emit($event)" />
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaginatorComponent {
 

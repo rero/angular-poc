@@ -9,7 +9,7 @@ Framework version: Angular 22
 - Prefer Angular Signals for local state.
 - Avoid RxJS when Signals are sufficient.
 - Use strict TypeScript typing.
-- Use `@openng/optimus-ui` components for UI needs instead of building custom widgets or reintroducing PrimeNG.
+- Use `@openng/optimus-ui` components for UI needs instead of building custom widgets.
 
 ## Component design
 

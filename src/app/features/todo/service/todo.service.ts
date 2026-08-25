@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Service } from "@angular/core";
+
 import { TODOS } from "../model/todo.mock";
 import { Todo } from "../model/todo.model";
 
-@Injectable()
+@Service({ autoProvided: false })
 export class TodoService {
   loadAll(): Todo[] {
     return TODOS;

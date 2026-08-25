@@ -1,15 +1,13 @@
-export type EsRecord = {
+export interface EsRecord {
   created: string;
   id: string;
   links: Links
-  metadata: any,
+  metadata: unknown,
   updated: string;
-};
+}
 
-export type EsResult = {
-  aggregations: {
-    [key: string]: any;
-  },
+export interface EsResult {
+  aggregations: Record<string, unknown>,
   hits: {
     hits: EsRecord[],
     total: {
@@ -18,14 +16,14 @@ export type EsResult = {
     }
   },
   links: Links;
-};
+}
 
-export type Links = {
+export interface Links {
   create?: string;
   next?: string;
   prev?: string;
   self: string;
-};
+}
 
 export const EsResultInitialState: EsResult = {
     aggregations: {},

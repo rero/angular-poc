@@ -36,3 +36,13 @@ pnpm test:watch
 Run tests with coverage:
 
 pnpm test:coverage
+
+## Lint
+
+Run ESLint:
+
+pnpm lint
+
+Run ESLint and automatically fix issues:
+
+pnpm lint:fix

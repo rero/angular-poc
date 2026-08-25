@@ -1,16 +1,17 @@
-import { patchState, signalStore, withComputed, withHooks, withMethods, withProps, withState } from "@ngrx/signals";
-import { Todo } from "../model/todo.model";
 import { computed, inject } from "@angular/core";
-import { TodoService } from "../service/todo.service";
+import { patchState, signalStore, withComputed, withHooks, withMethods, withProps, withState } from "@ngrx/signals";
 import { MessageService } from "@openng/optimus-ui/api";
+
+import { Todo } from "../model/todo.model";
+import { TodoService } from "../service/todo.service";
 
 export type TodoFilter = "all" | "pending" | "completed";
 
-type TodosState = {
+interface TodosState {
   todos: Todo[],
   loading: boolean,
   filter: TodoFilter
-};
+}
 
 const initialState: TodosState = {
   todos: [],

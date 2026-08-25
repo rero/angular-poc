@@ -1,11 +1,11 @@
-export type OpenLibraryApiResult = {
+export interface OpenLibraryApiResult {
   numFound: number;
   start: number;
   q: string;
   docs: OpenLibraryRecord[];
-};
+}
 
-export type OpenLibraryRecord = {
+export interface OpenLibraryRecord {
   author_key: string[];
   author_name: string[];
   language: string[];

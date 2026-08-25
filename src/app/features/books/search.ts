@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { InputText } from "@openng/optimus-ui/inputtext";
-import { OpenLibraryStore } from './store/open-library.store';
+import { Component, inject } from '@angular/core';
 import { Button } from '@openng/optimus-ui/button';
+import { InputText } from "@openng/optimus-ui/inputtext";
+
+import { OpenLibraryStore } from './store/open-library.store';
 
 @Component({
   selector: 'app-search',
@@ -40,7 +41,6 @@ import { Button } from '@openng/optimus-ui/button';
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Search {
   protected store = inject(OpenLibraryStore);

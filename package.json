@@ -9,7 +9,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "private": true,
   "packageManager": "pnpm@11.22.0",
@@ -35,13 +37,19 @@
     "@angular/build": "^22.1.5",
     "@angular/cli": "^22.1.5",
     "@angular/compiler-cli": "^22.1.3",
+    "@eslint/js": "^10.0.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@vitest/coverage-v8": "^4.1.11",
+    "angular-eslint": "^22.1.0",
     "baseline-browser-mapping": "^2.11.18",
+    "eslint": "^10.9.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
     "jsdom": "^28.1.0",
     "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
+    "typescript-eslint": "^8.67.0",
     "vitest": "^4.1.11"
   }
 }

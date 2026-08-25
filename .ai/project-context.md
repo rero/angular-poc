@@ -10,7 +10,7 @@
 - Signals preferred over RxJS
 - @openng/optimus-ui as UI component library (Tailwind CSS-based)
 - Vitest for testing
-- Node 22.13+
+- Node ^22.22.3 || ^24.15.0 || >=26.0.0 (per @angular/cli's engines requirement)
 - pnpm as package manager
 
 ## Architecture principles

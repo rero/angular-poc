@@ -4,25 +4,26 @@ on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [22.13.x, 24.0.x]
+        node-version: ['^24.15.0', '^26.0.0']
 
     steps:
-    - uses: actions/checkout@v6
-    - name: Use pnpm
-      uses: pnpm/action-setup@v4
-      with:
-        version: 11.17.0
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: pnpm
-    - name: install package
-      run: pnpm install --frozen-lockfile
-    - name: run tests
-      run: pnpm test
+      - uses: actions/checkout@v7
+      - name: Use pnpm
+        uses: pnpm/action-setup@v6
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - name: install package
+        run: pnpm install --frozen-lockfile
+      - name: run lint
+        run: pnpm lint
+      - name: run build
+        run: pnpm build
+      - name: run tests
+        run: pnpm test

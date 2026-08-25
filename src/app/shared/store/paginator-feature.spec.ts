@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { signalStore } from '@ngrx/signals';
+
 import { Pager, withPaginator } from './paginator-feature';
 
 const defaultPager: Pager = {

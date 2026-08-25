@@ -23,7 +23,7 @@ Constraints:
 - do not introduce NgModules
 - move business logic outside components when possible
 - avoid RxJS if Angular Signals are sufficient
-- use `@openng/optimus-ui` components instead of custom widgets or PrimeNG
+- use `@openng/optimus-ui` components instead of custom widgets
 
 ## Improve typing
 

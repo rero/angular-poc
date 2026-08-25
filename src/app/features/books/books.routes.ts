@@ -1,8 +1,9 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn, Router, Routes } from '@angular/router';
+import { catchError, EMPTY } from 'rxjs';
+
 import { OpenLibraryWork } from './model/open-library-work.model';
 import { OpenLibraryBase } from './service/open-library-base';
-import { catchError, EMPTY } from 'rxjs';
 
 export const workResolver: ResolveFn<OpenLibraryWork> = (route: ActivatedRouteSnapshot) => {
   const key = route.paramMap.get('key');

@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  SecurityContext
-} from '@angular/core';
+import { Component, computed, inject, SecurityContext } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -15,7 +9,6 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-book-detail',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink],
   styles: [
     `
@@ -123,7 +116,7 @@ export default class BookDetail {
   });
 
   coverUrl = computed(() => {
-    const covers = this.work().covers;
+    const { covers } = this.work();
     if (covers && covers.length > 0) {
       return `${environment.openLibraryCoverApiUrl}/b/id/${covers[0]}-L.jpg`;
     }

@@ -1,5 +1,5 @@
-@use "@openng/icons/openng-icons.css";
-@use "tailwindcss";
+@use '@openng/icons/openng-icons.css';
+@use 'tailwindcss';
 @plugin "@openng/optimus-ui-tailwindcss";
 
 h1 {
@@ -14,7 +14,7 @@ h3 {
   @apply text-2xl;
 }
 
-/* Force PrimeNG Avatar to be circular */
+/* Force Avatar to be circular */
 .p-avatar {
   border-radius: 50% !important;
   overflow: hidden !important;

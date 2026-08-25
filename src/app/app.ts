@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LayoutService } from '@shared/layout/layout.service';
 import { Toast } from '@openng/optimus-ui/toast';
+import { LayoutService } from '@shared/layout/layout.service';
+
 import { Sidebar } from './features/sidebar/sidebar';
 
 @Component({
@@ -22,7 +23,6 @@ import { Sidebar } from './features/sidebar/sidebar';
     </div>
   </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {
   protected readonly layoutService = inject(LayoutService);

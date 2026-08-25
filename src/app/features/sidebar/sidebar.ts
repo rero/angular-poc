@@ -1,14 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Avatar } from '@openng/optimus-ui/avatar';
 import { AppStateStore } from '@shared/appSate/app-state-store';
 import { LayoutService } from '@shared/layout/layout.service';
-import { Avatar } from '@openng/optimus-ui/avatar';
 
 @Component({
   selector: 'app-sidebar',
   imports: [RouterLink, RouterLinkActive, Avatar],
   templateUrl: './sidebar.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Sidebar {
   protected readonly store = inject(AppStateStore);

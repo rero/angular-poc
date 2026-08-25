@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { environment } from '@env/environment';
+
 import { OpenLibraryRecord } from './model/open-library.model';
 
 @Component({
@@ -86,7 +87,6 @@ import { OpenLibraryRecord } from './model/open-library.model';
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Book {
   book = input.required<OpenLibraryRecord>();

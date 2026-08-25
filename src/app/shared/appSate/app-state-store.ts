@@ -1,14 +1,15 @@
 import { computed, inject } from "@angular/core";
 import { patchState, signalStore, withComputed, withMethods, withState } from "@ngrx/signals";
 import { firstValueFrom } from "rxjs";
+
 import { AppStateApi } from "./app-state-api";
 import { Settings } from "./model/settings.model";
 import { User } from "./model/user.model";
 
-export type AppState = {
+export interface AppState {
   user: Partial<User>,
   settings: Settings
-};
+}
 
 const initialAppState: AppState = {
   user: {},

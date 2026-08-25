@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
+
 import { PageTitleStrategy } from './page-title-strategy';
 
 const snapshot = {} as RouterStateSnapshot;

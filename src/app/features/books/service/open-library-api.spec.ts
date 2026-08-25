@@ -1,6 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+
 import { OpenLibraryApi } from './open-library-api';
 
 const BASE_URL = 'https://openlibrary.org';
@@ -18,11 +19,7 @@ describe('OpenLibraryApi', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        OpenLibraryApi,
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ],
+      providers: [OpenLibraryApi, provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(OpenLibraryApi);
     httpMock = TestBed.inject(HttpTestingController);
@@ -41,7 +38,7 @@ describe('OpenLibraryApi', () => {
     it('retourne la notice avec title et key', () => {
       const mockWork = { key: '/works/OL12345W', title: 'Le Seigneur des Anneaux' };
 
-      service.getWork('OL12345W').subscribe(work => {
+      service.getWork('OL12345W').subscribe((work) => {
         expect(work.title).toBe('Le Seigneur des Anneaux');
         expect(work.key).toBe('/works/OL12345W');
       });
@@ -60,7 +57,7 @@ describe('OpenLibraryApi', () => {
         first_publish_date: '1965',
       };
 
-      service.getWork('OL12345W').subscribe(work => {
+      service.getWork('OL12345W').subscribe((work) => {
         expect(work.description).toBe('Une saga de science-fiction.');
         expect(work.subjects).toEqual(['Science fiction', 'Desert']);
         expect(work.covers).toEqual([1234, 5678]);
