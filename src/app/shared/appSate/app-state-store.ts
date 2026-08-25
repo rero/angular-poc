@@ -7,8 +7,7 @@ import { User } from "./model/user.model";
 
 export type AppState = {
   user: Partial<User>,
-  settings: Settings,
-  isConnected: boolean
+  settings: Settings
 };
 
 const initialAppState: AppState = {
@@ -16,8 +15,7 @@ const initialAppState: AppState = {
   settings: {
     availableLanguages: ["fr"],
     currentLanguage: "fr",
-  },
-  isConnected: false
+  }
 }
 
 export const AppStateStore = signalStore(

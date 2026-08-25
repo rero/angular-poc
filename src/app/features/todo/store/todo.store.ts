@@ -8,14 +8,12 @@ export type TodoFilter = "all" | "pending" | "completed";
 
 type TodosState = {
   todos: Todo[],
-  filteredTodos: Todo[],
   loading: boolean,
   filter: TodoFilter
 };
 
 const initialState: TodosState = {
   todos: [],
-  filteredTodos: [],
   loading: false,
   filter: "all"
 };

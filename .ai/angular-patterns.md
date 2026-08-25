@@ -7,8 +7,7 @@ Components rely on signals for UI updates.
 Example:
 
 @Component({
-  selector: 'app-counter',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-counter'
 })
 export class CounterComponent {
 
@@ -43,9 +42,35 @@ export const CounterStore = signalStore(
 Usage in component:
 
 @Component({
-  selector: 'app-counter',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-counter'
 })
 export class CounterComponent {
   store = inject(CounterStore);
+}
+
+## UI components with optimus-ui
+
+UI components come from `@openng/optimus-ui`, imported per-component from their subpath.
+
+Example:
+
+import { Component, input, output } from '@angular/core';
+import { Paginator, PaginatorState } from '@openng/optimus-ui/paginator';
+
+@Component({
+  selector: 'app-list',
+  imports: [Paginator],
+  template: `
+    <p-paginator
+      [first]="first()"
+      [rows]="rows()"
+      [totalRecords]="total()"
+      (onPageChange)="pageChange.emit($event)" />
+  `
+})
+export class ListComponent {
+  first = input.required<number>();
+  rows = input.required<number>();
+  total = input.required<number>();
+  pageChange = output<PaginatorState>();
 }

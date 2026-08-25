@@ -1,7 +1,7 @@
 import { delay, Observable, of } from 'rxjs';
 import { OpenLibraryBase } from './open-library-base';
 import { Injectable } from '@angular/core';
-import * as data from './open-library-results.json';
+import data from './open-library-results.json';
 import { OpenLibraryApiResult, OpenLibraryRecord } from '../model/open-library.model';
 import { OpenLibraryWork } from '../model/open-library-work.model';
 

@@ -1,6 +1,6 @@
 # Angular Rules
 
-Framework version: Angular 21
+Framework version: Angular 22
 
 ## Core rules
 
@@ -9,22 +9,13 @@ Framework version: Angular 21
 - Prefer Angular Signals for local state.
 - Avoid RxJS when Signals are sufficient.
 - Use strict TypeScript typing.
+- Use `@openng/optimus-ui` components for UI needs instead of building custom widgets or reintroducing PrimeNG.
 
 ## Component design
 
 - Components must remain small and focused on UI.
 - Business logic should not live inside components.
 - Move reusable logic to services or pure functions.
-
-## Change detection
-
-- Use OnPush change detection by default.
-
-Example:
-
-@Component({
-changeDetection: ChangeDetectionStrategy.OnPush
-})
 
 ## Dependency injection
 

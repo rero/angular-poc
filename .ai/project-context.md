@@ -2,12 +2,13 @@
 
 ## Stack
 
-- Angular 21
+- Angular 22
 - Standalone components
 - TypeScript strict mode
 - Zoneless change detection (Zone.js disabled)
 - NgRx Signal Store for application state
 - Signals preferred over RxJS
+- @openng/optimus-ui as UI component library (Tailwind CSS-based)
 - Vitest for testing
 - Node 22.13+
 - pnpm as package manager

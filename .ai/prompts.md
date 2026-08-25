@@ -4,14 +4,12 @@ These prompt templates help guide the LLM when performing common tasks in this r
 
 ## Fix Angular test
 
-Goal: migrate this test to Vitest.
+Goal: fix this failing or broken test.
 
 Constraints:
 
 - do not change business logic
-- replace Jasmine APIs with Vitest equivalents
-- replace `jasmine.createSpy` with `vi.fn`
-- replace `spyOn` with `vi.spyOn`
+- use Vitest APIs (`vi.fn`, `vi.spyOn`, etc.)
 - keep TestBed only if Angular integration is required
 
 ## Refactor Angular component
@@ -20,12 +18,12 @@ Goal: simplify this component.
 
 Constraints:
 
-- Angular 21
+- Angular 22
 - standalone components only
 - do not introduce NgModules
 - move business logic outside components when possible
 - avoid RxJS if Angular Signals are sufficient
-- keep change detection strategy OnPush
+- use `@openng/optimus-ui` components instead of custom widgets or PrimeNG
 
 ## Improve typing
 

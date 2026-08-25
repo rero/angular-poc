@@ -4,3 +4,4 @@
 @.ai/angular-rules.md
 @.ai/angular-patterns.md
 @.ai/dev-commands.md
+@.ai/prompts.md
