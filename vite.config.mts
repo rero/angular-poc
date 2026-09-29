@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [angular()],
   resolve: {
     alias: {
-      '@env': resolve(__dirname, 'src/environments'),
-      '@shared': resolve(__dirname, 'src/app/shared'),
+      '@env': resolve(import.meta.dirname, 'src/environments'),
+      '@shared': resolve(import.meta.dirname, 'src/app/shared'),
     },
   },
   test: {
