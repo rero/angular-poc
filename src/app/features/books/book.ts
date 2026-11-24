@@ -17,6 +17,8 @@ import { OpenLibraryRecord } from './model/open-library.model';
           <img
             [src]="coverUrl()"
             [alt]="book().title"
+            loading="lazy"
+            decoding="async"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             (error)="onImageError($event)" />
         } @else {
