@@ -7,9 +7,9 @@
     "start_mock": "ng serve --configuration mock",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "ng test --watch=false",
+    "test:watch": "ng test",
+    "test:coverage": "ng test --watch=false --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -34,8 +34,6 @@
     "tslib": "^2.9.1"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^2.9.7",
-    "@analogjs/vitest-angular": "^2.9.7",
     "@angular/build": "^22.3.0",
     "@angular/cli": "^22.3.0",
     "@angular/compiler-cli": "^22.3.0",

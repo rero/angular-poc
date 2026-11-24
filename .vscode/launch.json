@@ -10,22 +10,22 @@
       "url": "http://localhost:4200/"
     },
     {
-      "name": "vitest: current file",
+      "name": "ng test: current file",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
-      "args": ["run", "${relativeFile}"],
+      "program": "${workspaceFolder}/node_modules/@angular/cli/bin/ng.js",
+      "args": ["test", "--watch=false", "--include", "${relativeFile}"],
       "autoAttachChildProcesses": true,
       "smartStep": true,
       "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
       "console": "integratedTerminal"
     },
     {
-      "name": "vitest: all tests",
+      "name": "ng test: all tests",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
-      "args": ["run", "--no-file-parallelism"],
+      "program": "${workspaceFolder}/node_modules/@angular/cli/bin/ng.js",
+      "args": ["test", "--watch=false"],
       "autoAttachChildProcesses": true,
       "smartStep": true,
       "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
