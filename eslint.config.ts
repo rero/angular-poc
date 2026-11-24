@@ -1,7 +1,6 @@
 import eslint from '@eslint/js';
 import angular from 'angular-eslint';
 import { defineConfig } from 'eslint/config';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
@@ -17,9 +16,6 @@ export default defineConfig([
       angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
-    plugins: {
-      'simple-import-sort': simpleImportSort,
-    },
     rules: {
       '@angular-eslint/directive-selector': [
         'error',
@@ -37,8 +33,6 @@ export default defineConfig([
           style: 'kebab-case',
         },
       ],
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
     },
   },
   {

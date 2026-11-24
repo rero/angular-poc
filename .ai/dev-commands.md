@@ -46,3 +46,13 @@ pnpm lint
 Run ESLint and automatically fix issues:
 
 pnpm lint:fix
+
+## Format
+
+Format all files with Prettier (also sorts imports):
+
+pnpm format
+
+Check formatting without writing changes:
+
+pnpm format:check

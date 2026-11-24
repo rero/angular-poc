@@ -1,8 +1,8 @@
 import { Service } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 
-import { OpenLibraryApiResult, OpenLibraryRecord } from '../model/open-library.model';
 import { OpenLibraryWork } from '../model/open-library-work.model';
+import { OpenLibraryApiResult, OpenLibraryRecord } from '../model/open-library.model';
 import { OpenLibraryBase } from './open-library-base';
 import data from './open-library-results.json';
 
@@ -29,9 +29,7 @@ export class OpenLibraryMock extends OpenLibraryBase {
       }).pipe(delay(1000));
     }
     const filteredData: OpenLibraryRecord[] =
-      query === '*'
-        ? data
-        : data.filter((result: OpenLibraryRecord) => result.title.includes(query));
+      query === '*' ? data : data.filter((result: OpenLibraryRecord) => result.title.includes(query));
     return of({
       numFound: filteredData.length,
       start: page * limit,

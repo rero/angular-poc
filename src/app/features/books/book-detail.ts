@@ -41,10 +41,7 @@ import { map } from 'rxjs';
   ],
   template: `
     <div class="max-w-4xl mx-auto p-6">
-      <a
-        [routerLink]="['/books']"
-        class="inline-flex items-center gap-2 text-[#1765A2] hover:underline mb-6"
-      >
+      <a [routerLink]="['/books']" class="inline-flex items-center gap-2 text-[#1765A2] hover:underline mb-6">
         <i class="pi pi-arrow-left"></i>
         Retour à la bibliothèque
       </a>
@@ -53,8 +50,7 @@ import { map } from 'rxjs';
         <div class="md:flex">
           <!-- Cover -->
           <div
-            class="md:w-64 flex-shrink-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center min-h-64"
-          >
+            class="md:w-64 flex-shrink-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center min-h-64">
             @if (coverUrl()) {
               <img [src]="coverUrl()" [alt]="work().title" class="w-full h-full object-cover" />
             } @else {
@@ -78,21 +74,14 @@ import { map } from 'rxjs';
 
             @if (descriptionHtml()) {
               <div class="mb-6">
-                <h2 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">
-                  Description
-                </h2>
-                <div
-                  class="prose text-gray-700 leading-relaxed text-sm"
-                  [innerHTML]="descriptionHtml()"
-                ></div>
+                <h2 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">Description</h2>
+                <div class="prose text-gray-700 leading-relaxed text-sm" [innerHTML]="descriptionHtml()"></div>
               </div>
             }
 
             @if (work().subjects && work().subjects!.length > 0) {
               <div>
-                <h2 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">
-                  Sujets
-                </h2>
+                <h2 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">Sujets</h2>
                 <div class="flex flex-wrap gap-2">
                   @for (subject of work().subjects!.slice(0, 10); track subject) {
                     <span class="bg-[#1765A2]/10 text-[#1765A2] text-xs px-3 py-1 rounded-full">

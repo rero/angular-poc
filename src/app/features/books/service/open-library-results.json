@@ -59,41 +59,14 @@
     "author_key": ["OL25788A"],
     "author_name": ["John Steinbeck"],
     "key": "/works/OL23197W",
-    "language": [
-      "eng",
-      "dan",
-      "und",
-      "heb",
-      "per",
-      "ice",
-      "tam",
-      "chi",
-      "fre",
-      "cat",
-      "dut",
-      "ger"
-    ],
+    "language": ["eng", "dan", "und", "heb", "per", "ice", "tam", "chi", "fre", "cat", "dut", "ger"],
     "title": "The Red Pony"
   },
   {
     "author_key": ["OL25788A"],
     "author_name": ["John Steinbeck"],
     "key": "/works/OL23166W",
-    "language": [
-      "vie",
-      "chi",
-      "pol",
-      "spa",
-      "gre",
-      "ita",
-      "heb",
-      "swe",
-      "fre",
-      "cze",
-      "eng",
-      "ger",
-      "jpn"
-    ],
+    "language": ["vie", "chi", "pol", "spa", "gre", "ita", "heb", "swe", "fre", "cze", "eng", "ger", "jpn"],
     "title": "East of Eden"
   },
   {
@@ -255,20 +228,7 @@
     "author_key": ["OL108289A"],
     "author_name": ["John Stuart Mill"],
     "key": "/works/OL1068091W",
-    "language": [
-      "ger",
-      "eng",
-      "urd",
-      "spa",
-      "heb",
-      "chi",
-      "jpn",
-      "dan",
-      "swe",
-      "yid",
-      "fre",
-      "per"
-    ],
+    "language": ["ger", "eng", "urd", "spa", "heb", "chi", "jpn", "dan", "swe", "yid", "fre", "per"],
     "title": "On Liberty"
   },
   {
@@ -282,21 +242,7 @@
     "author_key": ["OL25788A"],
     "author_name": ["John Steinbeck"],
     "key": "/works/OL23199W",
-    "language": [
-      "tur",
-      "ice",
-      "gre",
-      "swe",
-      "eng",
-      "spa",
-      "dan",
-      "dut",
-      "fin",
-      "ger",
-      "fre",
-      "chi",
-      "jpn"
-    ],
+    "language": ["tur", "ice", "gre", "swe", "eng", "spa", "dan", "dut", "fin", "ger", "fre", "chi", "jpn"],
     "title": "Cannery Row"
   },
   {
@@ -310,20 +256,7 @@
     "author_key": ["OL39329A"],
     "author_name": ["John Grisham"],
     "key": "/works/OL76972W",
-    "language": [
-      "por",
-      "ger",
-      "fre",
-      "eng",
-      "dut",
-      "rus",
-      "ita",
-      "fin",
-      "spa",
-      "und",
-      "jpn",
-      "chi"
-    ],
+    "language": ["por", "ger", "fre", "eng", "dut", "rus", "ita", "fin", "spa", "und", "jpn", "chi"],
     "title": "The Firm"
   }
 ]

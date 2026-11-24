@@ -3,8 +3,8 @@ import { inject, Service } from '@angular/core';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 
-import { availableFields, OpenLibraryApiResult } from '../model/open-library.model';
 import { OpenLibraryWork } from '../model/open-library-work.model';
+import { availableFields, OpenLibraryApiResult } from '../model/open-library.model';
 import { OpenLibraryBase } from './open-library-base';
 
 // Docs: https://openlibrary.org/dev/docs/api/search

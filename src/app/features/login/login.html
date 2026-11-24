@@ -9,9 +9,7 @@
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <img src="images/logo.svg" alt="RERO +" class="mx-auto h-15 w-auto" />
-      <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-        Connectez-vous à votre compte
-      </h2>
+      <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Connectez-vous à votre compte</h2>
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -24,28 +22,18 @@
               pInputText
               [formField]="loginForm.username"
               class="block w-full"
-              [class.untouched-field]="
-                !loginForm.username().dirty() && !loginForm.username().touched()
-              "
-            />
+              [class.untouched-field]="!loginForm.username().dirty() && !loginForm.username().touched()" />
           </div>
-          @if (
-            loginForm.username().invalid() &&
-            (loginForm.username().dirty() || loginForm.username().touched())
-          ) {
+          @if (loginForm.username().invalid() && (loginForm.username().dirty() || loginForm.username().touched())) {
             <div class="text-red-500 text-xs">{{ loginForm.username().errors()[0].message }}</div>
           }
         </div>
 
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm/6 font-medium text-gray-900"
-              >Mot de passe</label
-            >
+            <label for="password" class="block text-sm/6 font-medium text-gray-900">Mot de passe</label>
             <div class="text-sm">
-              <a href="#" class="font-semibold text-blue-600 hover:text-blue-500"
-                >Mot de passe oublié?</a
-              >
+              <a href="#" class="font-semibold text-blue-600 hover:text-blue-500">Mot de passe oublié?</a>
             </div>
           </div>
           <div>
@@ -54,15 +42,9 @@
               [formField]="loginForm.password"
               type="password"
               class="block w-full"
-              [class.untouched-field]="
-                !loginForm.password().dirty() && !loginForm.password().touched()
-              "
-            />
+              [class.untouched-field]="!loginForm.password().dirty() && !loginForm.password().touched()" />
           </div>
-          @if (
-            loginForm.password().invalid() &&
-            (loginForm.password().dirty() || loginForm.password().touched())
-          ) {
+          @if (loginForm.password().invalid() && (loginForm.password().dirty() || loginForm.password().touched())) {
             <div class="text-red-500 text-xs">{{ loginForm.password().errors()[0].message }}</div>
           }
         </div>
@@ -72,8 +54,7 @@
             type="submit"
             severity="info"
             [disabled]="loginForm().invalid()"
-            styleClass="flex w-full justify-center"
-          >
+            styleClass="flex w-full justify-center">
             S'identifier
           </p-button>
         </div>

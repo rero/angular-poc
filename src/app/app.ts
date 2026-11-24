@@ -14,8 +14,7 @@ import { Sidebar } from './features/sidebar/sidebar';
       <div
         class="transition-all duration-300 p-4"
         [class.ml-64]="layoutService.sidebarExpanded()"
-        [class.ml-16]="!layoutService.sidebarExpanded()"
-      >
+        [class.ml-16]="!layoutService.sidebarExpanded()">
         <div class="max-w-7xl mx-auto">
           <router-outlet />
         </div>

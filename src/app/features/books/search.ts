@@ -18,8 +18,7 @@ import { OpenLibraryStore } from './store/open-library.store';
             placeholder="Rechercher un livre, un auteur..."
             [value]="store.filter()"
             (keyup.enter)="store.search(input.value)"
-            class="w-full transition-all"
-          />
+            class="w-full transition-all" />
         </div>
 
         @if (store.filter()) {
@@ -29,11 +28,7 @@ import { OpenLibraryStore } from './store/open-library.store';
           </p-button>
         }
 
-        <p-button
-          severity="info"
-          [disabled]="store.isPending()"
-          (click)="store.search(input.value)"
-        >
+        <p-button severity="info" [disabled]="store.isPending()" (click)="store.search(input.value)">
           @if (store.isPending()) {
             <i class="pi pi-spin pi-spinner"></i>
             <span class="hidden sm:inline">Recherche...</span>

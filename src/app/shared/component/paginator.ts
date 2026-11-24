@@ -13,8 +13,7 @@ import { Pager } from '../store/paginator-feature';
       [rows]="pager().rows"
       [totalRecords]="total()"
       [rowsPerPageOptions]="pager().rowsPerPageOptions"
-      (onPageChange)="pageChange.emit($event)"
-    />
+      (onPageChange)="pageChange.emit($event)" />
   `,
 })
 export class PaginatorComponent {

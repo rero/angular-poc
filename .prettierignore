@@ -1,1 +1,5 @@
+# Generated files (Prettier also honours .gitignore)
 pnpm-lock.yaml
+.angular
+dist
+coverage

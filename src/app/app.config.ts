@@ -7,9 +7,9 @@ import {
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, TitleStrategy } from '@angular/router';
+import Aura from '@openng/optimus-ui-themes/aura';
 import { MessageService } from '@openng/optimus-ui/api';
 import { provideOptimus } from '@openng/optimus-ui/config';
-import Aura from '@openng/optimus-ui-themes/aura';
 import { AppStateStore } from '@shared/appSate/app-state-store';
 import { httpResponseErrorInterceptor } from '@shared/interceptor/http-response-error-interceptor';
 import { PageTitleStrategy } from '@shared/page-title-strategy';

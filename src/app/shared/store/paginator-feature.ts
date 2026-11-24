@@ -1,10 +1,4 @@
-import {
-  patchState,
-  signalMethod,
-  signalStoreFeature,
-  withMethods,
-  withState,
-} from '@ngrx/signals';
+import { patchState, signalMethod, signalStoreFeature, withMethods, withState } from '@ngrx/signals';
 import { PaginatorState } from '@openng/optimus-ui/paginator';
 
 export interface Pager {

@@ -24,7 +24,7 @@ Application state should be implemented using NgRx Signal Store.
 Example pattern:
 
 ```ts
-import { signalStore, withState, withMethods } from '@ngrx/signals';
+import { signalStore, withMethods, withState } from '@ngrx/signals';
 
 export const CounterStore = signalStore(
   { providedIn: 'root' },
@@ -66,12 +66,7 @@ import { Paginator, PaginatorState } from '@openng/optimus-ui/paginator';
   selector: 'app-list',
   imports: [Paginator],
   template: `
-    <p-paginator
-      [first]="first()"
-      [rows]="rows()"
-      [totalRecords]="total()"
-      (onPageChange)="pageChange.emit($event)"
-    />
+    <p-paginator [first]="first()" [rows]="rows()" [totalRecords]="total()" (onPageChange)="pageChange.emit($event)" />
   `,
 })
 export class ListComponent {
