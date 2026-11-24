@@ -1,5 +1,11 @@
 import { provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideEnvironmentInitializer, provideZonelessChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideBrowserGlobalErrorListeners,
+  provideEnvironmentInitializer,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter, TitleStrategy } from '@angular/router';
 import { MessageService } from '@openng/optimus-ui/api';
 import { provideOptimus } from '@openng/optimus-ui/config';
@@ -21,14 +27,14 @@ export const appConfig: ApplicationConfig = {
       inject(AppStateStore).loadSettings();
     }),
     provideOptimus({
-        ripple: true,
-        theme: {
-            preset: Lara
-        }
+      ripple: true,
+      theme: {
+        preset: Lara,
+      },
     }),
     { provide: TitleStrategy, useClass: PageTitleStrategy },
     { provide: OpenLibraryBase, useClass: OpenLibraryMock },
     MessageService,
-    AppStateStore
-  ]
+    AppStateStore,
+  ],
 };

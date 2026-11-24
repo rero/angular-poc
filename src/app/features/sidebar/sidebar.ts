@@ -32,18 +32,18 @@ export class Sidebar {
     {
       label: 'Accueil',
       icon: 'pi pi-home',
-      routerLink: ['/']
+      routerLink: ['/'],
     },
     {
       label: 'Tâche',
       icon: 'pi pi-check-square',
-      routerLink: ['/', 'todo']
+      routerLink: ['/', 'todo'],
     },
     {
       label: 'Bibliothèque',
       icon: 'pi pi-book',
-      routerLink: ['/', 'books']
-    }
+      routerLink: ['/', 'books'],
+    },
   ]);
 
   userItems = computed(() => [
@@ -53,7 +53,7 @@ export class Sidebar {
       visible: !this.store.isConnected(),
       command: () => {
         this.router.navigate(['login']);
-      }
+      },
     },
     {
       label: 'Se déconnecter',
@@ -61,7 +61,7 @@ export class Sidebar {
       visible: this.store.isConnected(),
       command: () => {
         this.store.logout();
-      }
-    }
+      },
+    },
   ]);
 }

@@ -9,19 +9,21 @@ import { Sidebar } from './features/sidebar/sidebar';
   selector: 'app-root',
   imports: [RouterOutlet, Sidebar, Toast],
   template: `
-  <div class="min-h-screen bg-gray-50">
-    <app-sidebar />
-    <div class="transition-all duration-300 p-4"
-         [class.ml-64]="layoutService.sidebarExpanded()"
-         [class.ml-16]="!layoutService.sidebarExpanded()">
-      <div class="max-w-7xl mx-auto">
-        <router-outlet />
+    <div class="min-h-screen bg-gray-50">
+      <app-sidebar />
+      <div
+        class="transition-all duration-300 p-4"
+        [class.ml-64]="layoutService.sidebarExpanded()"
+        [class.ml-16]="!layoutService.sidebarExpanded()"
+      >
+        <div class="max-w-7xl mx-auto">
+          <router-outlet />
+        </div>
+        @defer (on immediate) {
+          <p-toast />
+        }
       </div>
-      @defer (on immediate) {
-        <p-toast />
-      }
     </div>
-  </div>
   `,
 })
 export class App {

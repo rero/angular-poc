@@ -12,10 +12,7 @@ describe('PageTitleStrategy', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        PageTitleStrategy,
-        { provide: TitleStrategy, useExisting: PageTitleStrategy },
-      ],
+      providers: [PageTitleStrategy, { provide: TitleStrategy, useExisting: PageTitleStrategy }],
     });
     strategy = TestBed.inject(PageTitleStrategy);
     titleService = TestBed.inject(Title);

@@ -29,7 +29,9 @@ export class OpenLibraryMock extends OpenLibraryBase {
       }).pipe(delay(1000));
     }
     const filteredData: OpenLibraryRecord[] =
-      query === '*' ? data : data.filter((result: OpenLibraryRecord) => result.title.includes(query));
+      query === '*'
+        ? data
+        : data.filter((result: OpenLibraryRecord) => result.title.includes(query));
     return of({
       numFound: filteredData.length,
       start: page * limit,

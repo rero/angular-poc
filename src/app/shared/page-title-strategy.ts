@@ -1,6 +1,6 @@
-import { inject, Service } from "@angular/core";
-import { Title } from "@angular/platform-browser";
-import { RouterStateSnapshot, TitleStrategy } from "@angular/router";
+import { inject, Service } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
 
 @Service({ autoProvided: false })
 export class PageTitleStrategy extends TitleStrategy {

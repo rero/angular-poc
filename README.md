@@ -5,6 +5,7 @@ Projet pour tester Angular POC
 Vous devez avoir au préalable installer pnpm sur votre système.
 
 ## Installation de bibliothèques
+
 ```bash
 pnpm install
 ```

@@ -28,17 +28,11 @@ export default class Todo implements OnInit {
     { label: 'Terminé', value: 'completed' },
   ]);
 
-  pendingCount = computed(() =>
-    this.store.filteredTodos().filter(t => !t.completed).length
-  );
+  pendingCount = computed(() => this.store.filteredTodos().filter((t) => !t.completed).length);
 
-  completedCount = computed(() =>
-    this.store.todos().filter(t => t.completed).length
-  );
+  completedCount = computed(() => this.store.todos().filter((t) => t.completed).length);
 
-  pendingTotalCount = computed(() =>
-    this.store.todos().filter(t => !t.completed).length
-  );
+  pendingTotalCount = computed(() => this.store.todos().filter((t) => !t.completed).length);
 
   ngOnInit(): void {
     this.filter.set(this.store.filter());

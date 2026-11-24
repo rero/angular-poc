@@ -1,7 +1,7 @@
-import { Service } from "@angular/core";
+import { Service } from '@angular/core';
 
-import { TODOS } from "../model/todo.mock";
-import { Todo } from "../model/todo.model";
+import { TODOS } from '../model/todo.mock';
+import { Todo } from '../model/todo.model';
 
 @Service({ autoProvided: false })
 export class TodoService {
@@ -9,10 +9,10 @@ export class TodoService {
     return TODOS;
   }
 
-  addTodo(todo: Partial<Todo>): Todo{
+  addTodo(todo: Partial<Todo>): Todo {
     return {
       id: Math.random().toString(36).substring(2, 9),
-      ...todo
+      ...todo,
     } as Todo;
   }
 }

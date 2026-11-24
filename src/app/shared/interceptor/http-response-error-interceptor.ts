@@ -7,12 +7,14 @@ export const httpResponseErrorInterceptor: HttpInterceptorFn = (req, next) => {
   const messageService = inject(MessageService);
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      messageService.add({ severity: "error", summary: "Http response error" })
+      messageService.add({ severity: 'error', summary: 'Http response error' });
 
-      return of(new HttpResponse<void>({
-        body: undefined,
-        status: error.status
-      }));
-    })
+      return of(
+        new HttpResponse<void>({
+          body: undefined,
+          status: error.status,
+        }),
+      );
+    }),
   );
 };

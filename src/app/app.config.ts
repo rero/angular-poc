@@ -1,5 +1,11 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideEnvironmentInitializer, provideZonelessChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideBrowserGlobalErrorListeners,
+  provideEnvironmentInitializer,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter, TitleStrategy } from '@angular/router';
 import { MessageService } from '@openng/optimus-ui/api';
 import { provideOptimus } from '@openng/optimus-ui/config';
@@ -17,21 +23,19 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient(
-      withInterceptors([httpResponseErrorInterceptor])
-    ),
+    provideHttpClient(withInterceptors([httpResponseErrorInterceptor])),
     provideEnvironmentInitializer(() => {
       inject(AppStateStore).loadSettings();
     }),
     provideOptimus({
-        ripple: true,
-        theme: {
-          preset: Aura
-      }
+      ripple: true,
+      theme: {
+        preset: Aura,
+      },
     }),
     { provide: TitleStrategy, useClass: PageTitleStrategy },
     { provide: OpenLibraryBase, useClass: OpenLibraryApi },
     MessageService,
-    AppStateStore
-  ]
+    AppStateStore,
+  ],
 };

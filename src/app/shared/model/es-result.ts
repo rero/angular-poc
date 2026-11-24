@@ -1,20 +1,20 @@
 export interface EsRecord {
   created: string;
   id: string;
-  links: Links
-  metadata: unknown,
+  links: Links;
+  metadata: unknown;
   updated: string;
 }
 
 export interface EsResult {
-  aggregations: Record<string, unknown>,
+  aggregations: Record<string, unknown>;
   hits: {
-    hits: EsRecord[],
+    hits: EsRecord[];
     total: {
       relation: string;
       value: number;
-    }
-  },
+    };
+  };
   links: Links;
 }
 
@@ -26,15 +26,15 @@ export interface Links {
 }
 
 export const EsResultInitialState: EsResult = {
-    aggregations: {},
-    hits: {
-      hits: [],
-      total: {
-        relation: 'eq',
-        value: 0
-      }
+  aggregations: {},
+  hits: {
+    hits: [],
+    total: {
+      relation: 'eq',
+      value: 0,
     },
-    links: {
-      self: ''
-    }
+  },
+  links: {
+    self: '',
+  },
 };

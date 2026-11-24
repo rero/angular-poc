@@ -19,7 +19,7 @@ export const workResolver: ResolveFn<OpenLibraryWork> = (route: ActivatedRouteSn
     catchError(() => {
       void router.navigate(['/not-found']);
       return EMPTY;
-    })
+    }),
   );
 };
 
@@ -27,7 +27,7 @@ export const routes: Routes = [
   {
     path: '',
     title: 'Bibliothèque',
-    loadComponent: () => import('./books')
+    loadComponent: () => import('./books'),
   },
   {
     path: ':key',
@@ -35,6 +35,6 @@ export const routes: Routes = [
     resolve: {
       work: workResolver,
     },
-    loadComponent: () => import('./book-detail')
+    loadComponent: () => import('./book-detail'),
   },
-]
+];

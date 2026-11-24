@@ -26,9 +26,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -62,11 +60,11 @@
               "extractLicenses": false,
               "sourceMap": true,
               "fileReplacements": [
-              {
-                "replace": "src/app/app.config.ts",
-                "with": "src/app/app.config.mock.ts"
-              }
-            ]
+                {
+                  "replace": "src/app/app.config.ts",
+                  "with": "src/app/app.config.mock.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

@@ -5,27 +5,27 @@ export const routes: Routes = [
     path: '',
     pathMatch: 'full',
     loadComponent: () => import('./features/home/home'),
-    title: 'Home'
+    title: 'Home',
   },
   {
     path: 'login',
     pathMatch: 'full',
     loadComponent: () => import('./features/login/login'),
-    title: 'Login'
+    title: 'Login',
   },
   {
     path: 'todo',
-    pathMatch:'full',
+    pathMatch: 'full',
     loadComponent: () => import('./features/todo/todo'),
-    title: 'Tâches'
+    title: 'Tâches',
   },
   {
     path: 'books',
-    loadChildren: () => import('./features/books/books.routes').then(m => m.routes),
+    loadChildren: () => import('./features/books/books.routes').then((m) => m.routes),
   },
   {
     path: '**',
     loadComponent: () => import('./features/not-found/not-found'),
-    title: 'Not Found'
-  }
+    title: 'Not Found',
+  },
 ];

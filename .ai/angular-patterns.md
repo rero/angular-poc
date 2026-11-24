@@ -1,21 +1,21 @@
 # Angular Patterns
 
-# Zoneless component pattern
+## Zoneless component pattern
 
 Components rely on signals for UI updates.
 
 Example:
 
+```ts
 @Component({
-  selector: 'app-counter'
+  selector: 'app-counter',
 })
 export class CounterComponent {
-
   store = inject(CounterStore);
 
   count = this.store.count;
-
 }
+```
 
 ## NgRx Signal Store
 
@@ -23,30 +23,34 @@ Application state should be implemented using NgRx Signal Store.
 
 Example pattern:
 
+```ts
 import { signalStore, withState, withMethods } from '@ngrx/signals';
 
 export const CounterStore = signalStore(
   { providedIn: 'root' },
 
   withState({
-    count: 0
+    count: 0,
   }),
 
   withMethods((store) => ({
     increment() {
-      store.count.update(v => v + 1);
-    }
-  }))
-  )
+      store.count.update((v) => v + 1);
+    },
+  })),
+);
+```
 
 Usage in component:
 
+```ts
 @Component({
-  selector: 'app-counter'
+  selector: 'app-counter',
 })
 export class CounterComponent {
   store = inject(CounterStore);
 }
+```
 
 ## UI components with optimus-ui
 
@@ -54,6 +58,7 @@ UI components come from `@openng/optimus-ui`, imported per-component from their 
 
 Example:
 
+```ts
 import { Component, input, output } from '@angular/core';
 import { Paginator, PaginatorState } from '@openng/optimus-ui/paginator';
 
@@ -65,8 +70,9 @@ import { Paginator, PaginatorState } from '@openng/optimus-ui/paginator';
       [first]="first()"
       [rows]="rows()"
       [totalRecords]="total()"
-      (onPageChange)="pageChange.emit($event)" />
-  `
+      (onPageChange)="pageChange.emit($event)"
+    />
+  `,
 })
 export class ListComponent {
   first = input.required<number>();
@@ -74,3 +80,4 @@ export class ListComponent {
   total = input.required<number>();
   pageChange = output<PaginatorState>();
 }
+```

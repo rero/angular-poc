@@ -2,9 +2,9 @@ import { Service, signal } from '@angular/core';
 
 @Service()
 export class LayoutService {
-    sidebarExpanded = signal(false);
+  sidebarExpanded = signal(false);
 
-    toggleSidebar() {
-        this.sidebarExpanded.update((v) => !v);
-    }
+  toggleSidebar() {
+    this.sidebarExpanded.update((v) => !v);
+  }
 }

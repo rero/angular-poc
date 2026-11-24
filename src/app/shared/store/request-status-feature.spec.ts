@@ -15,7 +15,7 @@ const TestStore = signalStore(
     setStatus(status: RequestStatus) {
       patchState(store, { requestStatus: status });
     },
-  }))
+  })),
 );
 
 describe('request-status-feature', () => {
@@ -74,9 +74,7 @@ describe('request-status-feature', () => {
     });
 
     it('error returns the error message when status is an error object', () => {
-      TestBed.runInInjectionContext(() =>
-        store.setStatus({ error: 'network error' })
-      );
+      TestBed.runInInjectionContext(() => store.setStatus({ error: 'network error' }));
       expect(store.error()).toBe('network error');
       expect(store.isPending()).toBe(false);
       expect(store.isFulfilled()).toBe(false);

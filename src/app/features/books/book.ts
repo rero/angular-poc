@@ -8,15 +8,20 @@ import { OpenLibraryRecord } from './model/open-library.model';
   selector: 'app-book',
   imports: [RouterLink],
   template: `
-    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:border-[#1EA1CF]/30 transition-all duration-300 group h-full flex flex-col">
+    <div
+      class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:border-[#1EA1CF]/30 transition-all duration-300 group h-full flex flex-col"
+    >
       <!-- Book Cover -->
-      <div class="relative bg-gradient-to-br from-gray-100 to-gray-200 h-64 flex items-center justify-center overflow-hidden">
+      <div
+        class="relative bg-gradient-to-br from-gray-100 to-gray-200 h-64 flex items-center justify-center overflow-hidden"
+      >
         @if (coverUrl()) {
           <img
             [src]="coverUrl()"
             [alt]="book().title"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            (error)="onImageError($event)" />
+            (error)="onImageError($event)"
+          />
         } @else {
           <div class="text-center p-6">
             <i class="pi pi-book text-6xl text-gray-400 mb-3"></i>
@@ -25,7 +30,9 @@ import { OpenLibraryRecord } from './model/open-library.model';
         }
         <!-- Overlay badge for publication year -->
         @if (book().first_publish_year) {
-          <div class="absolute top-3 right-3 bg-[#1765A2] text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
+          <div
+            class="absolute top-3 right-3 bg-[#1765A2] text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg"
+          >
             {{ book().first_publish_year }}
           </div>
         }
@@ -35,8 +42,7 @@ import { OpenLibraryRecord } from './model/open-library.model';
       <div class="p-5 flex-1 flex flex-col">
         <!-- Title -->
         <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2 transition-colors">
-          <a [routerLink]="['/books', workId()]"
-             class="hover:text-[#1765A2]">{{ book().title }}</a>
+          <a [routerLink]="['/books', workId()]" class="hover:text-[#1765A2]">{{ book().title }}</a>
         </h3>
 
         <!-- Authors -->

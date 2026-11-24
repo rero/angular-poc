@@ -1,22 +1,30 @@
-import { computed, inject } from "@angular/core";
-import { patchState, signalStore, withComputed, withHooks, withMethods, withProps, withState } from "@ngrx/signals";
-import { MessageService } from "@openng/optimus-ui/api";
+import { computed, inject } from '@angular/core';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withHooks,
+  withMethods,
+  withProps,
+  withState,
+} from '@ngrx/signals';
+import { MessageService } from '@openng/optimus-ui/api';
 
-import { Todo } from "../model/todo.model";
-import { TodoService } from "../service/todo.service";
+import { Todo } from '../model/todo.model';
+import { TodoService } from '../service/todo.service';
 
-export type TodoFilter = "all" | "pending" | "completed";
+export type TodoFilter = 'all' | 'pending' | 'completed';
 
 interface TodosState {
-  todos: Todo[],
-  loading: boolean,
-  filter: TodoFilter
+  todos: Todo[];
+  loading: boolean;
+  filter: TodoFilter;
 }
 
 const initialState: TodosState = {
   todos: [],
   loading: false,
-  filter: "all"
+  filter: 'all',
 };
 
 export const TodoStore = signalStore(
@@ -25,14 +33,14 @@ export const TodoStore = signalStore(
     filteredTodos: computed(() => {
       const todos = state.todos();
       switch (state.filter()) {
-        case "all":
+        case 'all':
           return todos;
-        case "pending":
-          return todos.filter(todo => !todo.completed);
-        case "completed":
-          return todos.filter(todo => todo.completed);
+        case 'pending':
+          return todos.filter((todo) => !todo.completed);
+        case 'completed':
+          return todos.filter((todo) => todo.completed);
       }
-    })
+    }),
   })),
   withProps(() => ({
     todoService: inject(TodoService),
@@ -41,60 +49,66 @@ export const TodoStore = signalStore(
   withMethods((store) => ({
     loadAll() {
       const todos = store.todoService.loadAll();
-      patchState(store, { todos }, { loading: true })
+      patchState(store, { todos }, { loading: true });
     },
     addTodo(title: string) {
-      const todo = store.todoService.addTodo({ title, completed: false});
+      const todo = store.todoService.addTodo({ title, completed: false });
       patchState(store, (state) => ({
-        todos: [...state.todos,todo]
+        todos: [...state.todos, todo],
       }));
       store.messageService.add({
         severity: 'success',
         summary: 'Succès',
-        detail: `Le tâche "${todo.title}" a été ajouté`
+        detail: `Le tâche "${todo.title}" a été ajouté`,
       });
     },
     updateTodo(id: number, completed: boolean) {
-      const todo = store.todos().filter((todo: Todo) => todo.id === id).pop();
+      const todo = store
+        .todos()
+        .filter((todo: Todo) => todo.id === id)
+        .pop();
       if (todo) {
         patchState(store, (state) => ({
-          todos: state.todos.map(todo => todo.id == id ? {...todo, completed} : todo)
+          todos: state.todos.map((todo) => (todo.id == id ? { ...todo, completed } : todo)),
         }));
         if (completed) {
           store.messageService.add({
             severity: 'success',
             summary: 'Terminé',
-            detail: `Le tâche "${todo.title}" est terminée`
+            detail: `Le tâche "${todo.title}" est terminée`,
           });
         } else {
           store.messageService.add({
             severity: 'warn',
             summary: 'En cours',
-            detail: `Le tâche "${todo.title}" est en cours`
+            detail: `Le tâche "${todo.title}" est en cours`,
           });
         }
       }
     },
     deleteTodo(id: number) {
-      const todo = store.todos().filter((todo: Todo) => todo.id === id).pop();
+      const todo = store
+        .todos()
+        .filter((todo: Todo) => todo.id === id)
+        .pop();
       if (todo) {
         patchState(store, (state) => ({
-          todos: state.todos.filter(todo => todo.id != id)
+          todos: state.todos.filter((todo) => todo.id != id),
         }));
         store.messageService.add({
           severity: 'warn',
           summary: 'Succès',
-          detail: `Le tâche "${todo.title}" a été supprimée`
+          detail: `Le tâche "${todo.title}" a été supprimée`,
         });
       }
     },
     updateFilter(filter: TodoFilter) {
       patchState(store, { filter });
-    }
+    },
   })),
-  withHooks(store => ({
+  withHooks((store) => ({
     onInit() {
-      store.loadAll()
-    }
-  }))
+      store.loadAll();
+    },
+  })),
 );

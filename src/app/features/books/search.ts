@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Button } from '@openng/optimus-ui/button';
-import { InputText } from "@openng/optimus-ui/inputtext";
+import { InputText } from '@openng/optimus-ui/inputtext';
 
 import { OpenLibraryStore } from './store/open-library.store';
 
@@ -29,7 +29,11 @@ import { OpenLibraryStore } from './store/open-library.store';
           </p-button>
         }
 
-        <p-button severity="info" [disabled]="store.isPending()" (click)="store.search(input.value)">
+        <p-button
+          severity="info"
+          [disabled]="store.isPending()"
+          (click)="store.search(input.value)"
+        >
           @if (store.isPending()) {
             <i class="pi pi-spin pi-spinner"></i>
             <span class="hidden sm:inline">Recherche...</span>
